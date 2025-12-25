@@ -7,6 +7,7 @@ import {
   fetchNovelInfo,
   fetchChapter,
 } from './client';
+import { useDownloadsStore } from '../stores/downloadsStore';
 
 // Query Keys
 export const queryKeys = {
@@ -69,7 +70,24 @@ export function useNovelInfo(novelId: string) {
 export function useChapter(novelId: string, chapterId: string) {
   return useQuery({
     queryKey: queryKeys.chapter(novelId, chapterId),
-    queryFn: () => fetchChapter(novelId, chapterId),
+    queryFn: async () => {
+      // 1. Check offline storage first
+      const downloaded = useDownloadsStore.getState().getDownloadedChapter(novelId, chapterId);
+      if (downloaded) {
+        console.log(`[Offline] Loading chapter: ${downloaded.chapterTitle}`);
+        return {
+          id: downloaded.chapterId,
+          title: downloaded.chapterTitle,
+          content: downloaded.content,
+          novelId: downloaded.novelId,
+          novelTitle: downloaded.novelTitle,
+          navigation: { prev: null, next: null }, // Navigation is handled by the reader index
+        };
+      }
+
+      // 2. Fetch from API
+      return fetchChapter(novelId, chapterId);
+    },
     staleTime: CACHE_TIMES.chapter,
     gcTime: CACHE_TIMES.chapter * 2,
     enabled: !!novelId && !!chapterId,

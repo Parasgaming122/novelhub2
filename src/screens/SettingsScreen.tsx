@@ -16,6 +16,8 @@ import { themes, spacing, borderRadius, typography } from '../constants/theme';
 import { ThemeMode, RootStackParamList } from '../types';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useDownloadsStore } from '../stores/downloadsStore';
+import { useReadingListsStore } from '../stores/readingListsStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -37,6 +39,15 @@ export default function SettingsScreen() {
   const setSpeed = useSettingsStore((state) => state.setSpeed);
   const setAutoScrollEnabled = useSettingsStore((state) => state.setAutoScrollEnabled);
   const setFocusEnabled = useSettingsStore((state) => state.setFocusEnabled);
+  
+  // Download settings
+  const downloadOnWifiOnly = useSettingsStore((state) => state.downloadOnWifiOnly);
+  const setDownloadOnWifiOnly = useSettingsStore((state) => state.setDownloadOnWifiOnly);
+  const maxStorageSize = useSettingsStore((state) => state.maxStorageSize);
+  const setMaxStorageSize = useSettingsStore((state) => state.setMaxStorageSize);
+  
+  // Clear downloads
+  const clearAllDownloads = useDownloadsStore((state) => state.clearAll);
 
   // Reset
   const resetToDefaults = useSettingsStore((state) => state.resetToDefaults);
@@ -224,6 +235,62 @@ export default function SettingsScreen() {
             thumbColor="#FFFFFF"
           />
         </View>
+      </View>
+
+      {/* Download Settings */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>
+          Downloads & Storage
+        </Text>
+
+        <View style={styles.switchRow}>
+          <Text style={[styles.settingLabel, { color: colors.text }]}>
+            Download on Wi-Fi Only
+          </Text>
+          <Switch
+            value={downloadOnWifiOnly}
+            onValueChange={setDownloadOnWifiOnly}
+            trackColor={{ false: colors.surfaceVariant, true: colors.primary }}
+            thumbColor="#FFFFFF"
+          />
+        </View>
+
+        <View style={styles.settingRow}>
+          <Text style={[styles.settingLabel, { color: colors.text }]}>
+            Storage Limit: {maxStorageSize} MB
+          </Text>
+          <Slider
+            style={styles.slider}
+            minimumValue={50}
+            maximumValue={1000}
+            step={50}
+            value={maxStorageSize}
+            onValueChange={setMaxStorageSize}
+            minimumTrackTintColor={colors.primary}
+            maximumTrackTintColor={colors.surfaceVariant}
+            thumbTintColor={colors.primary}
+          />
+        </View>
+
+        <TouchableOpacity
+          style={[styles.menuItem, { backgroundColor: colors.surface, borderColor: colors.border, marginTop: spacing.md }]}
+          onPress={() => {
+            Alert.alert(
+              'Clear Downloads',
+              'Are you sure you want to delete all offline chapters?',
+              [
+                { text: 'Cancel', style: 'cancel' },
+                { text: 'Clear All', style: 'destructive', onPress: clearAllDownloads }
+              ]
+            );
+          }}
+        >
+          <Text style={styles.menuIcon}>🗑️</Text>
+          <View style={styles.menuContent}>
+            <Text style={[styles.menuLabel, { color: colors.error }]}>Clear All Downloads</Text>
+            <Text style={[styles.menuSub, { color: colors.textSecondary }]}>Free up storage space</Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
       {/* Stats and Insights */}

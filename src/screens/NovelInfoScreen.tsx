@@ -24,6 +24,7 @@ import { themes, spacing, borderRadius, shadows, typography } from '../constants
 import ChapterListItem from '../components/ChapterListItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorView from '../components/ErrorView';
+import ListPickerModal from '../components/ListPickerModal';
 
 type RouteProps = RouteProp<RootStackParamList, 'NovelInfo'>;
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -44,6 +45,7 @@ export default function NovelInfoScreen() {
 
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [sortDescending, setSortDescending] = useState(false);
+  const [showListPicker, setShowListPicker] = useState(false);
 
   const { data, isLoading, isError, error, refetch } = useNovelInfo(novelId);
 
@@ -139,7 +141,7 @@ export default function NovelInfoScreen() {
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: colors.surface, borderColor: colors.border }]}
             onPress={() => {
-              DownloadManager.downloadChapters(data.id, data.title, data.chapters);
+              DownloadManager.downloadChapters(data.id, data.title, data.chapters, data.coverImage);
               Alert.alert('Download Started', `Adding ${data.chapters.length} chapters to the download queue.`);
             }}
           >
@@ -149,11 +151,7 @@ export default function NovelInfoScreen() {
           
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: colors.surface, borderColor: colors.border }]}
-            onPress={() => {
-              // Simulating toggle favorite for now or opening list picker
-              // A real implementation would show a modal to pick a list
-              Alert.alert('Coming Soon', 'Reading list management modal will be implemented in the next phase.');
-            }}
+            onPress={() => setShowListPicker(true)}
           >
             <Text style={styles.actionIcon}>➕</Text>
             <Text style={[styles.actionLabel, { color: colors.text }]}>Add to List</Text>
@@ -265,6 +263,11 @@ export default function NovelInfoScreen() {
           </TouchableOpacity>
         )}
       </View>
+      <ListPickerModal
+        visible={showListPicker}
+        onClose={() => setShowListPicker(false)}
+        novelId={novelId}
+      />
     </View>
   );
 }

@@ -8,7 +8,7 @@ import { safeStorage } from '../utils/storage';
 interface DownloadsState {
   downloadedNovels: DownloadedNovel[];
   
-  addChapter: (chapter: DownloadedChapter) => void;
+  addChapter: (chapter: DownloadedChapter, coverImage?: string) => void;
   removeChapter: (novelId: string, chapterId: string) => void;
   removeNovel: (novelId: string) => void;
   clearAll: () => void;
@@ -24,7 +24,7 @@ export const useDownloadsStore = create<DownloadsState>()(
     (set, get) => ({
       downloadedNovels: [],
 
-      addChapter: (chapter) =>
+      addChapter: (chapter, coverImage) =>
         set((state) => {
           const novels = [...state.downloadedNovels];
           const novelIndex = novels.findIndex(
@@ -32,7 +32,7 @@ export const useDownloadsStore = create<DownloadsState>()(
           );
 
           if (novelIndex >= 0) {
-            // Novel exists, add chapter
+            // Novel exists, add chapter and update cover if provided
             const novel = novels[novelIndex];
             const chapterExists = novel.chapters.some(
               (c) => c.chapterId === chapter.chapterId
@@ -42,12 +42,16 @@ export const useDownloadsStore = create<DownloadsState>()(
               novel.chapters.push(chapter);
               novel.totalSize += chapter.size;
             }
+            
+            if (coverImage && !novel.coverImage) {
+              novel.coverImage = coverImage;
+            }
           } else {
             // New novel
             novels.push({
               novelId: chapter.novelId,
               novelTitle: chapter.novelTitle,
-              coverImage: '',
+              coverImage: coverImage || '',
               chapters: [chapter],
               totalSize: chapter.size,
               downloadedAt: Date.now(),
