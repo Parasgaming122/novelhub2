@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 import { useSettingsStore } from '../stores/settingsStore';
@@ -22,63 +21,61 @@ export default function AppNavigator() {
   const colors = themes[theme].colors;
 
   return (
-    <NavigationContainer>
-      <View style={{ flex: 1 }}>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: colors.surface,
-            },
-            headerTintColor: colors.text,
-            headerTitleStyle: {
-              fontWeight: '600',
-            },
-            contentStyle: {
-              backgroundColor: colors.background,
-            },
-            animation: 'slide_from_right',
+    <View style={{ flex: 1 }}>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colors.surface,
+          },
+          headerTintColor: colors.text,
+          headerTitleStyle: {
+            fontWeight: '600',
+          },
+          contentStyle: {
+            backgroundColor: colors.background,
+          },
+          animation: 'slide_from_right',
+        }}
+      >
+        <Stack.Screen
+          name="MainTabs"
+          component={MainTabNavigator}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="NovelInfo"
+          component={NovelInfoScreen}
+          options={{
+            title: 'Novel Details',
+            headerBackTitle: 'Back',
           }}
-        >
-          <Stack.Screen
-            name="MainTabs"
-            component={MainTabNavigator}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="NovelInfo"
-            component={NovelInfoScreen}
-            options={{
-              title: 'Novel Details',
-              headerBackTitle: 'Back',
-            }}
-          />
-          <Stack.Screen
-            name="ChapterReader"
-            component={ChapterReaderScreen}
-            options={{
-              headerShown: false, // Reader has its own header
-              animation: 'fade',
-            }}
-          />
-          <Stack.Screen
-            name="ListDetails"
-            component={ListDetailsScreen}
-            options={{
-              title: 'Reading List',
-              headerBackTitle: 'Lists',
-            }}
-          />
-          <Stack.Screen
-            name="ReadingStats"
-            component={ReadingStatsScreen}
-            options={{
-              title: 'Reading Statistics',
-              headerBackTitle: 'Back',
-            }}
-          />
-        </Stack.Navigator>
-        <GlobalTTSBar />
-      </View>
-    </NavigationContainer>
+        />
+        <Stack.Screen
+          name="ChapterReader"
+          component={ChapterReaderScreen}
+          options={{
+            headerShown: false, // Reader has its own header
+            animation: 'fade',
+          }}
+        />
+        <Stack.Screen
+          name="ListDetails"
+          component={ListDetailsScreen}
+          options={{
+            title: 'Reading List',
+            headerBackTitle: 'Lists',
+          }}
+        />
+        <Stack.Screen
+          name="ReadingStats"
+          component={ReadingStatsScreen}
+          options={{
+            title: 'Reading Statistics',
+            headerBackTitle: 'Back',
+          }}
+        />
+      </Stack.Navigator>
+      <GlobalTTSBar />
+    </View>
   );
 }

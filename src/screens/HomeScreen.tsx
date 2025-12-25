@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingBottom: spacing.xxl,
+    paddingBottom: spacing.xxxl * 3, // Increased padding for bottom bars
   },
   section: {
     marginTop: spacing.xl,

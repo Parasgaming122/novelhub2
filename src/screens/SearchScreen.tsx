@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     color: '#888',
   },
   listContent: {
-    paddingBottom: spacing.xxl,
+    paddingBottom: spacing.xxxl * 3,
   },
   emptyState: {
     flex: 1,

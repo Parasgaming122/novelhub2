@@ -8,9 +8,9 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../types';
+import { navigationRef } from '../navigation/navigationRef';
+import { useUIStore } from '../stores/uiStore';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSettingsStore } from '../stores/settingsStore';
 import { useReaderStore } from '../stores/readerStore';
 import { themes, spacing, borderRadius, shadows, typography } from '../constants/theme';
@@ -20,12 +20,14 @@ import TTSManager from '../services/TTSManager';
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 export default function GlobalTTSBar() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const insets = useSafeAreaInsets();
   const theme = useSettingsStore((state) => state.reader.theme);
   const colors = themes[theme].colors;
   
   // We use currentProgress from readerStore to know what's being read
   const currentProgress = useReaderStore((state) => state.currentProgress);
+  
+  const isReaderOpen = useUIStore((state) => state.isReaderOpen);
   
   // We need the TTS state, but since we're in a global component, 
   // we might want to listen to TTSManager status directly or use a simplified hook.
@@ -44,18 +46,21 @@ export default function GlobalTTSBar() {
     return () => clearInterval(interval);
   }, [isPlaying, isPaused, currentIndex]);
 
+  if (isReaderOpen) return null;
   if (!isPlaying && !isPaused) return null;
   if (!currentProgress) return null;
 
   const handlePress = () => {
-    navigation.navigate('ChapterReader', {
-      novelId: currentProgress.novelId,
-      chapterId: currentProgress.chapterId,
-      novelTitle: currentProgress.novelTitle,
-      chapterTitle: currentProgress.chapterTitle,
-      chapterIndex: currentProgress.chapterIndex,
-      coverImage: currentProgress.coverImage,
-    });
+    if (navigationRef.isReady()) {
+      navigationRef.navigate('ChapterReader', {
+        novelId: currentProgress.novelId,
+        chapterId: currentProgress.chapterId,
+        novelTitle: currentProgress.novelTitle,
+        chapterTitle: currentProgress.chapterTitle,
+        chapterIndex: currentProgress.chapterIndex,
+        coverImage: currentProgress.coverImage,
+      });
+    }
   };
 
   const togglePlayback = () => {
@@ -68,7 +73,15 @@ export default function GlobalTTSBar() {
 
   return (
     <TouchableOpacity 
-      style={[styles.container, { backgroundColor: colors.surface, borderTopColor: colors.border }, shadows.lg]}
+      style={[
+        styles.container, 
+        { 
+          backgroundColor: colors.surface, 
+          borderTopColor: colors.border,
+          bottom: (insets.bottom || 0) + 60, // Positioned exactly above the 60px tab bar
+        }, 
+        shadows.lg
+      ]}
       onPress={handlePress}
       activeOpacity={0.9}
     >

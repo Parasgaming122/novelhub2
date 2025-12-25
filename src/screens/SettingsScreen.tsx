@@ -355,7 +355,7 @@ export default function SettingsScreen() {
       {/* Version Info */}
       <View style={styles.footer}>
         <Text style={[styles.version, { color: colors.textMuted }]}>
-          Novel Reader v1.0.0
+          Novel Reader v1.0.1
         </Text>
         <Text style={[styles.version, { color: colors.textMuted }]}>
           Built with Expo SDK 54
@@ -371,6 +371,7 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingVertical: spacing.lg,
+    paddingBottom: spacing.xxxl * 4, // Ample space for bottom bars
   },
   section: {
     paddingHorizontal: spacing.lg,

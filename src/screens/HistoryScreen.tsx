@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingVertical: spacing.md,
+    paddingBottom: spacing.xxxl * 3, // Increased padding for bottom bars
   },
   headerActions: {
     flexDirection: 'row',

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { MainTabParamList } from '../types';
 import { useSettingsStore } from '../stores/settingsStore';
 import { themes, spacing } from '../constants/theme';
@@ -61,6 +62,7 @@ function SettingsIcon({ focused, color }: TabIconProps) {
 }
 
 export default function MainTabNavigator() {
+  const insets = useSafeAreaInsets();
   const theme = useSettingsStore((state) => state.reader.theme);
   const colors = themes[theme].colors;
 
@@ -74,8 +76,8 @@ export default function MainTabNavigator() {
           borderTopColor: colors.border,
           borderTopWidth: 1,
           paddingTop: spacing.xs,
-          paddingBottom: spacing.sm,
-          height: 60,
+          paddingBottom: spacing.sm + insets.bottom,
+          height: 60 + insets.bottom,
         },
         tabBarLabelStyle: {
           fontSize: 11,
