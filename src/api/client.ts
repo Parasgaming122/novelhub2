@@ -8,6 +8,7 @@ import {
   NovelInfo,
   ChapterContent,
 } from '../types';
+import { reconstructCoverImage } from '../utils/image';
 
 // API Configuration
 const ORIGINAL_API_URL = 'https://novelhall.vercel.app';
@@ -62,10 +63,7 @@ export async function fetchHomeData(): Promise<HomeData> {
     // Try to reconstruct cover image if missing
     let coverImage = item.coverImage || '';
     if (!coverImage && novelId) {
-      const idMatch = novelId.match(/-(\d+)$/);
-      if (idMatch) {
-        coverImage = `https://www.novelhall.com/comic/${idMatch[1]}.jpg`;
-      }
+      coverImage = reconstructCoverImage(novelId);
     }
 
     return {
@@ -126,11 +124,7 @@ export async function searchNovels(keyword: string): Promise<Novel[]> {
     // Try to reconstruct cover image if missing
     let coverImage = n.coverImage || n.image || '';
     if (!coverImage && extractedId) {
-      // Numerical part extraction for common Novelhall image pattern
-      const idMatch = extractedId.match(/-(\d+)$/);
-      if (idMatch) {
-        coverImage = `https://www.novelhall.com/comic/${idMatch[1]}.jpg`;
-      }
+      coverImage = reconstructCoverImage(extractedId);
     }
 
     return {

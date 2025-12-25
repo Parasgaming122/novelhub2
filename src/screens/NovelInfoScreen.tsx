@@ -25,6 +25,7 @@ import ChapterListItem from '../components/ChapterListItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorView from '../components/ErrorView';
 import ListPickerModal from '../components/ListPickerModal';
+import { getProxiedImageUrl } from '../utils/image';
 
 type RouteProps = RouteProp<RootStackParamList, 'NovelInfo'>;
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -105,14 +106,7 @@ export default function NovelInfoScreen() {
         <View style={[styles.header, { backgroundColor: colors.surface }]}>
           <Image
             source={{ 
-              uri: (() => {
-                let img = data.coverImage;
-                if (!img || img.trim() === '') {
-                  const idMatch = novelId.match(/-(\d+)$/);
-                  if (idMatch) img = `https://www.novelhall.com/comic/${idMatch[1]}.jpg`;
-                }
-                return `https://images.weserv.nl/?url=${encodeURIComponent(img || 'https://via.placeholder.com/300x450.png?text=No+Cover')}&default=${encodeURIComponent('https://via.placeholder.com/300x450.png?text=No+Cover')}`;
-              })(),
+              uri: getProxiedImageUrl(data.coverImage, novelId),
               headers: { 'User-Agent': 'Mozilla/5.0' }
             }}
             style={[styles.cover, shadows.md]}
@@ -154,20 +148,49 @@ export default function NovelInfoScreen() {
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: colors.surface, borderColor: colors.border }]}
             onPress={() => {
+              if (!data) return;
               DownloadManager.downloadChapters(data.id, data.title, data.chapters, data.coverImage);
-              Alert.alert('Download Started', `Adding ${data.chapters.length} chapters to the download queue.`);
+              Alert.alert('Download Started', `Adding all ${data.chapters.length} chapters to queue.`);
             }}
           >
             <Text style={styles.actionIcon}>📥</Text>
-            <Text style={[styles.actionLabel, { color: colors.text }]}>Download All</Text>
+            <Text style={[styles.actionLabel, { color: colors.text }]}>All</Text>
           </TouchableOpacity>
-          
+
+          <TouchableOpacity
+            style={[styles.actionButton, { backgroundColor: colors.surface, borderColor: colors.border }]}
+            onPress={() => {
+              if (!data) return;
+              const currentIndex = progress?.chapterIndex || 0;
+              const batch = data.chapters.slice(currentIndex, currentIndex + 25);
+              DownloadManager.downloadChapters(data.id, data.title, batch, data.coverImage);
+              Alert.alert('Download Started', `Adding next 25 chapters to queue.`);
+            }}
+          >
+            <Text style={styles.actionIcon}>+25</Text>
+            <Text style={[styles.actionLabel, { color: colors.text }]}>Next 25</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.actionButton, { backgroundColor: colors.surface, borderColor: colors.border }]}
+            onPress={() => {
+              if (!data) return;
+              const currentIndex = progress?.chapterIndex || 0;
+              const batch = data.chapters.slice(currentIndex, currentIndex + 50);
+              DownloadManager.downloadChapters(data.id, data.title, batch, data.coverImage);
+              Alert.alert('Download Started', `Adding next 50 chapters to queue.`);
+            }}
+          >
+            <Text style={styles.actionIcon}>+50</Text>
+            <Text style={[styles.actionLabel, { color: colors.text }]}>Next 50</Text>
+          </TouchableOpacity>
+
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: colors.surface, borderColor: colors.border }]}
             onPress={() => setShowListPicker(true)}
           >
             <Text style={styles.actionIcon}>➕</Text>
-            <Text style={[styles.actionLabel, { color: colors.text }]}>Add to List</Text>
+            <Text style={[styles.actionLabel, { color: colors.text }]}>List</Text>
           </TouchableOpacity>
         </View>
 
@@ -342,20 +365,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: spacing.lg,
     paddingBottom: spacing.lg,
-    gap: spacing.md,
+    gap: spacing.sm,
   },
   actionButton: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: spacing.sm,
-    borderRadius: borderRadius.md,
+    paddingVertical: spacing.md,
+    borderRadius: borderRadius.lg,
     borderWidth: 1,
   },
   actionIcon: {
-    fontSize: 16,
-    marginRight: spacing.sm,
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 4,
   },
   actionLabel: {
     fontSize: typography.fontSizes.sm,

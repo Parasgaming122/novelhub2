@@ -1,7 +1,8 @@
 // Novel Reader - Downloads Screen
-
+ 
 import React, { useCallback } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
+import { getProxiedImageUrl } from '../utils/image';
 import { FlashList } from '@shopify/flash-list';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -29,8 +30,8 @@ export default function DownloadsScreen() {
   };
 
   const handleNovelPress = useCallback(
-    (novelId: string) => {
-      navigation.navigate('NovelInfo', { novelId });
+    (novel: DownloadedNovel) => {
+      navigation.navigate('NovelInfo', { novelId: novel.novelId });
     },
     [navigation]
   );
@@ -71,14 +72,16 @@ export default function DownloadsScreen() {
   const renderItem = useCallback(
     ({ item }: { item: DownloadedNovel }) => (
       <TouchableOpacity
-        style={[
-          styles.downloadCard,
-          { backgroundColor: colors.cardBackground, borderColor: colors.border },
-        ]}
-        onPress={() => handleNovelPress(item.novelId)}
+        style={[styles.novelCard, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}
+        onPress={() => handleNovelPress(item)}
         onLongPress={() => handleDeleteNovel(item.novelId, item.novelTitle)}
         activeOpacity={0.7}
       >
+        <Image 
+          source={{ uri: getProxiedImageUrl(item.coverImage, item.novelId) }}
+          style={styles.coverImage}
+          resizeMode="cover"
+        />
         <View style={styles.cardContent}>
           <Text
             style={[styles.novelTitle, { color: colors.text }]}
@@ -153,7 +156,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   listContent: {
-    paddingVertical: spacing.md,
+    paddingBottom: spacing.xxl,
   },
   header: {
     flexDirection: 'row',
@@ -176,17 +179,24 @@ const styles = StyleSheet.create({
     fontSize: typography.fontSizes.sm,
     fontWeight: '500',
   },
-  downloadCard: {
+  novelCard: {
     flexDirection: 'row',
-    alignItems: 'center',
-    padding: spacing.lg,
+    padding: spacing.md,
     marginHorizontal: spacing.lg,
     marginVertical: spacing.sm,
     borderRadius: borderRadius.lg,
     borderWidth: 1,
+    alignItems: 'center',
+  },
+  coverImage: {
+    width: 60,
+    height: 85,
+    borderRadius: borderRadius.sm,
+    backgroundColor: '#eee',
   },
   cardContent: {
     flex: 1,
+    marginLeft: spacing.md,
   },
   novelTitle: {
     fontSize: typography.fontSizes.md,

@@ -1,6 +1,6 @@
 // Novel Reader - Reading Lists Screen
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -17,6 +17,9 @@ import { RootStackParamList, ReadingList } from '../types';
 import { useSettingsStore } from '../stores/settingsStore';
 import { themes, spacing, borderRadius, typography, shadows } from '../constants/theme';
 import { useReadingListsStore } from '../stores/readingListsStore';
+import { useDownloadsStore } from '../stores/downloadsStore';
+import { getProxiedImageUrl, reconstructCoverImage } from '../utils/image';
+import { Image } from 'react-native';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -29,9 +32,19 @@ export default function ReadingListsScreen() {
   const addList = useReadingListsStore((state) => state.addList);
   const removeList = useReadingListsStore((state) => state.removeList);
 
+  const downloadedNovels = useDownloadsStore((state) => state.downloadedNovels);
+  const downloadedNovelsCount = downloadedNovels.length;
+  const totalStorage = useDownloadsStore((state) => state.getTotalSize());
+
   const [showModal, setShowModal] = useState(false);
   const [newListName, setNewListName] = useState('');
   const [newListDescription, setNewListDescription] = useState('');
+
+  const formatSize = (bytes: number) => {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1014)).toFixed(1)} MB`;
+  };
 
   const handleCreateList = useCallback(() => {
     if (!newListName.trim()) {
@@ -68,39 +81,79 @@ export default function ReadingListsScreen() {
   );
 
   const renderItem = useCallback(
-    ({ item }: { item: ReadingList }) => (
-      <TouchableOpacity
-        style={[
-          styles.listCard,
-          { backgroundColor: colors.cardBackground, borderColor: colors.border },
-        ]}
-        onPress={() => navigation.navigate('ListDetails', { listId: item.id })}
-        onLongPress={() => handleDeleteList(item.id, item.name)}
-        activeOpacity={0.7}
-      >
-        <View style={styles.listInfo}>
-          <Text style={[styles.listName, { color: colors.text }]}>
-            {item.name}
-          </Text>
-          {item.description && (
+    ({ item }: { item: ReadingList }) => {
+      const isSystemList = item.id === 'downloads-list';
+      
+      // Get cover image for the list
+      const coverImage = (() => {
+        if (isSystemList) {
+          // Use the cover of the first downloaded novel if available
+          if (downloadedNovels.length > 0) return downloadedNovels[0].coverImage;
+          return null;
+        }
+        // For user lists, use the first novel's ID to reconstruct or a explicit cover
+        if (item.novelIds.length > 0) {
+          return reconstructCoverImage(item.novelIds[0]);
+        }
+        return null;
+      })();
+
+      return (
+        <TouchableOpacity
+          style={[
+            styles.listCard,
+            { 
+              backgroundColor: isSystemList ? colors.primary + '10' : colors.cardBackground, 
+              borderColor: isSystemList ? colors.primary : colors.border,
+              borderWidth: isSystemList ? 1.5 : 1
+            },
+          ]}
+          onPress={() => {
+            if (isSystemList) {
+              navigation.navigate('Downloads' as any);
+            } else {
+              navigation.navigate('ListDetails', { listId: item.id });
+            }
+          }}
+          onLongPress={() => !isSystemList && handleDeleteList(item.id, item.name)}
+          activeOpacity={0.7}
+        >
+          <Image 
+            source={{ uri: getProxiedImageUrl(coverImage) }}
+            style={styles.listCover}
+            resizeMode="cover"
+          />
+          <View style={styles.listInfo}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={[styles.listName, { color: colors.text }]}>
+                {isSystemList ? '📥 ' : ''}{item.name}
+              </Text>
+              {isSystemList && (
+                <View style={[styles.systemBadge, { backgroundColor: colors.primary }]}>
+                  <Text style={styles.systemBadgeText}>SYSTEM</Text>
+                </View>
+              )}
+            </View>
+            
             <Text
               style={[styles.listDescription, { color: colors.textSecondary }]}
               numberOfLines={1}
             >
-              {item.description}
+              {isSystemList ? `Total: ${formatSize(totalStorage)}` : item.description}
             </Text>
-          )}
-          <Text style={[styles.listCount, { color: colors.textMuted }]}>
-            {item.novelIds.length} novels
-          </Text>
-        </View>
-        <Text style={[styles.arrow, { color: colors.textMuted }]}>→</Text>
-      </TouchableOpacity>
-    ),
-    [colors, navigation, handleDeleteList]
+            
+            <Text style={[styles.listCount, { color: colors.textMuted }]}>
+              {isSystemList ? downloadedNovelsCount : item.novelIds.length} {isSystemList ? 'novels downloaded' : 'novels'}
+            </Text>
+          </View>
+          <Text style={[styles.arrow, { color: colors.textMuted }]}>→</Text>
+        </TouchableOpacity>
+      );
+    },
+    [colors, navigation, handleDeleteList, downloadedNovelsCount, totalStorage, downloadedNovels]
   );
 
-  const ListEmptyComponent = (
+  const ListEmptyComponent = useMemo(() => (
     <View style={styles.emptyState}>
       <Text style={styles.emptyEmoji}>📚</Text>
       <Text style={[styles.emptyTitle, { color: colors.text }]}>
@@ -110,11 +163,11 @@ export default function ReadingListsScreen() {
         Create lists to organize your novels
       </Text>
     </View>
-  );
+  ), [colors]);
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <FlashList
+      <FlashList<ReadingList>
         data={lists}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
@@ -206,14 +259,20 @@ const styles = StyleSheet.create({
   listCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.lg,
+    padding: spacing.md,
     marginHorizontal: spacing.lg,
     marginVertical: spacing.sm,
     borderRadius: borderRadius.lg,
-    borderWidth: 1,
+  },
+  listCover: {
+    width: 50,
+    height: 70,
+    borderRadius: borderRadius.sm,
+    backgroundColor: '#eee',
   },
   listInfo: {
     flex: 1,
+    marginLeft: spacing.md,
   },
   listName: {
     fontSize: typography.fontSizes.md,
@@ -230,6 +289,17 @@ const styles = StyleSheet.create({
   arrow: {
     fontSize: 18,
     marginLeft: spacing.md,
+  },
+  systemBadge: {
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginLeft: spacing.sm,
+  },
+  systemBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 8,
+    fontWeight: '900',
   },
   emptyState: {
     flex: 1,

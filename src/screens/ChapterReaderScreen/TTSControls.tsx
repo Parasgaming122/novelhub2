@@ -22,6 +22,7 @@ interface TTSControlsProps {
   onSkipPrevious: () => void;
   currentParagraph: number;
   totalParagraphs: number;
+  onStartFromHere?: () => void;
 }
 
 function TTSControls({
@@ -35,6 +36,7 @@ function TTSControls({
   onSkipPrevious,
   currentParagraph,
   totalParagraphs,
+  onStartFromHere,
 }: TTSControlsProps) {
   const insets = useSafeAreaInsets();
   const theme = useSettingsStore((state) => state.reader.theme);
@@ -136,7 +138,17 @@ function TTSControls({
         >
           <Text style={[styles.stopText, { color: (isPlaying || isPaused) ? colors.error : colors.textMuted }]}>Stop</Text>
         </TouchableOpacity>
+
+        {onStartFromHere && (
+          <TouchableOpacity 
+            style={[styles.startHereButton, { backgroundColor: colors.primary + '15' }]} 
+            onPress={onStartFromHere}
+          >
+            <Text style={[styles.startHereText, { color: colors.primary }]}>📍 Start from here</Text>
+          </TouchableOpacity>
+        )}
       </View>
+
 
     </View>
   );
@@ -249,5 +261,14 @@ const styles = StyleSheet.create({
   },
   settingLabel: {
     fontSize: 12,
+  },
+  startHereButton: {
+    paddingVertical: 4,
+    paddingHorizontal: spacing.sm,
+    borderRadius: 8,
+  },
+  startHereText: {
+    fontSize: 11,
+    fontWeight: '700',
   },
 });

@@ -23,7 +23,16 @@ interface ReadingListsState {
 export const useReadingListsStore = create<ReadingListsState>()(
   persist(
     (set, get) => ({
-      lists: [],
+      lists: [
+        {
+          id: 'downloads-list',
+          name: 'Downloads',
+          description: 'Your offline chapters',
+          novelIds: [],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        }
+      ],
 
       addList: ({ name, description }) =>
         set((state) => ({
@@ -41,9 +50,12 @@ export const useReadingListsStore = create<ReadingListsState>()(
         })),
 
       removeList: (listId) =>
-        set((state) => ({
-          lists: state.lists.filter((list) => list.id !== listId),
-        })),
+        set((state) => {
+          if (listId === 'downloads-list') return state; // Prevent removing system list
+          return {
+            lists: state.lists.filter((list) => list.id !== listId),
+          };
+        }),
 
       updateList: (listId, updates) =>
         set((state) => ({

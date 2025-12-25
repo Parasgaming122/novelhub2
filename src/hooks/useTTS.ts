@@ -20,6 +20,7 @@ interface UseTTSReturn {
   stop: () => void;
   skipNext: () => void;
   skipPrevious: () => void;
+  updateParagraphs: (paragraphs: string[]) => void;
 }
 
 export function useTTS({
@@ -87,6 +88,10 @@ export function useTTS({
     TTSManager.skipPrevious(ttsSettings);
   }, [ttsSettings]);
 
+  const updateParagraphs = useCallback((newParagraphs: string[]) => {
+    TTSManager.updateParagraphs(newParagraphs);
+  }, []);
+
   // Stop on unmount
   useEffect(() => {
     return () => {
@@ -104,5 +109,6 @@ export function useTTS({
     stop,
     skipNext,
     skipPrevious,
+    updateParagraphs,
   };
 }

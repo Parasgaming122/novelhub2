@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "novel",
+    "name": "Novel",
     "slug": "novel",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +21,16 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.parasgaming12.novel"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6f046301-f9dd-45ef-9478-b5907520c1cf"
+      }
     }
   }
 }

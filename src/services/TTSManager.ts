@@ -25,7 +25,7 @@ class TTSManager {
 
   public async speak(
     paragraphs: string[],
-    startIndex: number,
+    startIndex: number = 0,
     settings: TTSSettings,
     callbacks: {
       onParagraphChange: (index: number) => void;
@@ -33,32 +33,41 @@ class TTSManager {
       onError: (error: any) => void;
     }
   ) {
-    this.paragraphs = paragraphs;
+    // Clean paragraphs of any invisible characters that might cause delays
+    this.paragraphs = paragraphs.map(p => p.replace(/[\u200B-\u200D\uFEFF]/g, '').trim());
     this.currentParagraphIndex = startIndex;
     this.onParagraphChange = callbacks.onParagraphChange;
     this.onComplete = callbacks.onComplete;
     this.onError = callbacks.onError;
-    
     this.isPlaying = true;
     this.isPaused = false;
     
+    await Speech.stop(); // Stop any current speech before starting
     await this.playParagraph(this.currentParagraphIndex, settings);
+  }
+
+  /**
+   * Update the paragraphs list without stopping playback (for continuous reading)
+   */
+  public updateParagraphs(paragraphs: string[]) {
+    this.paragraphs = paragraphs.map(p => p.replace(/[\u200B-\u200D\uFEFF]/g, '').trim());
   }
 
   private async playParagraph(index: number, settings: TTSSettings) {
     if (index >= this.paragraphs.length) {
       this.isPlaying = false;
+      this.isPaused = false;
       this.onComplete?.();
       return;
     }
 
-    if (!this.isPlaying) return;
+    if (!this.isPlaying || this.isPaused) return;
 
     this.currentParagraphIndex = index;
     this.onParagraphChange?.(index);
 
     const text = this.paragraphs[index];
-    if (!text || text.trim().length === 0) {
+    if (!text || text.length === 0) {
       await this.playParagraph(index + 1, settings);
       return;
     }
@@ -74,26 +83,28 @@ class TTSManager {
           }
         },
         onError: (error) => {
+          if (this.isPaused) return; // Ignore errors caused by manual pause/stop
+          console.error('[TTS] Speech error:', error);
           this.isPlaying = false;
           this.onError?.(error);
         },
       });
     } catch (error) {
+      if (this.isPaused) return;
       this.isPlaying = false;
       this.onError?.(error);
     }
   }
 
   public async pause() {
-    await Speech.pause();
     this.isPaused = true;
+    await Speech.stop();
   }
 
   public async resume(settings: TTSSettings) {
+    if (!this.isPaused) return;
     this.isPaused = false;
-    // Standard resume is unreliable on many Android/iOS engines,
-    // so we re-speak the current paragraph if it was paused.
-    await Speech.stop();
+    this.isPlaying = true; // Ensure isPlaying is true on resume
     await this.playParagraph(this.currentParagraphIndex, settings);
   }
 
@@ -114,17 +125,23 @@ class TTSManager {
 
   public skipNext(settings: TTSSettings) {
     if (this.currentParagraphIndex < this.paragraphs.length - 1) {
-      this.stop();
-      this.isPlaying = true;
-      this.playParagraph(this.currentParagraphIndex + 1, settings);
+      this.currentParagraphIndex++;
+      if (this.isPlaying && !this.isPaused) {
+        Speech.stop().then(() => this.playParagraph(this.currentParagraphIndex, settings));
+      } else {
+        this.onParagraphChange?.(this.currentParagraphIndex);
+      }
     }
   }
 
   public skipPrevious(settings: TTSSettings) {
     if (this.currentParagraphIndex > 0) {
-      this.stop();
-      this.isPlaying = true;
-      this.playParagraph(this.currentParagraphIndex - 1, settings);
+      this.currentParagraphIndex--;
+      if (this.isPlaying && !this.isPaused) {
+        Speech.stop().then(() => this.playParagraph(this.currentParagraphIndex, settings));
+      } else {
+        this.onParagraphChange?.(this.currentParagraphIndex);
+      }
     }
   }
 
@@ -134,6 +151,10 @@ class TTSManager {
       isPaused: this.isPaused,
       currentParagraphIndex: this.currentParagraphIndex,
     };
+  }
+
+  public getCurrentIndex(): number {
+    return this.currentParagraphIndex;
   }
 }
 
