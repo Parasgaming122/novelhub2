@@ -11,6 +11,7 @@ interface UseChapterProgressProps {
   chapterTitle: string;
   chapterIndex: number;
   currentParagraph: number;
+  coverImage?: string;
 }
 
 export function useChapterProgress({
@@ -20,6 +21,7 @@ export function useChapterProgress({
   chapterTitle,
   chapterIndex,
   currentParagraph,
+  coverImage,
 }: UseChapterProgressProps) {
   const setProgress = useReaderStore((state) => state.setProgress);
   const addToHistory = useReaderStore((state) => state.addToHistory);
@@ -41,6 +43,7 @@ export function useChapterProgress({
       paragraphIndex: currentParagraphRef.current,
       scrollPosition: 0, // In a more advanced implementation, this would be updated from scroll events
       timestamp: Date.now(),
+      coverImage,
     };
     
     setProgress(progress);

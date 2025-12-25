@@ -180,12 +180,12 @@ export default function SettingsScreen() {
 
         <View style={styles.settingRow}>
           <Text style={[styles.settingLabel, { color: colors.text }]}>
-            Speed: {ttsSettings.speed.toFixed(1)}x
+            Speed: {ttsSettings.speed.toFixed(1)}x {ttsSettings.speed >= 3 && '🚀'}
           </Text>
           <Slider
             style={styles.slider}
             minimumValue={0.5}
-            maximumValue={2.0}
+            maximumValue={5.0} // Increased limit to 5.0x
             step={0.1}
             value={ttsSettings.speed}
             onValueChange={setSpeed}
@@ -194,6 +194,37 @@ export default function SettingsScreen() {
             thumbTintColor={colors.primary}
           />
         </View>
+
+        <TouchableOpacity 
+          style={[styles.menuItem, { backgroundColor: colors.surface, borderColor: colors.border, marginBottom: spacing.md }]}
+          onPress={() => {
+            // Fetch and show voices
+            Alert.alert('Voice Selection', 'Fetching voices...');
+            import('../services/TTSManager').then(m => m.default.getAvailableVoices()).then(voices => {
+              if (voices.length === 0) {
+                Alert.alert('No Voices', 'No alternative voices found on this device.');
+                return;
+              }
+              // Simple voice picker for now
+              Alert.alert(
+                'Select Voice',
+                'Choose a voice for TTS:',
+                voices.slice(0, 5).map(v => ({
+                  text: `${v.name} (${v.language})`,
+                  onPress: () => useSettingsStore.getState().setSelectedVoice(v.identifier)
+                })).concat([{ text: 'Default', onPress: () => useSettingsStore.getState().setSelectedVoice(undefined) }]) as any
+              );
+            });
+          }}
+        >
+          <Text style={styles.menuIcon}>🗣️</Text>
+          <View style={styles.menuContent}>
+            <Text style={[styles.menuLabel, { color: colors.text }]}>Select TTS Voice</Text>
+            <Text style={[styles.menuSub, { color: colors.textSecondary }]}>
+              {ttsSettings.selectedVoiceIdentifier ? 'Custom voice selected' : 'Using system default'}
+            </Text>
+          </View>
+        </TouchableOpacity>
 
         <View style={styles.settingRow}>
           <Text style={[styles.settingLabel, { color: colors.text }]}>

@@ -66,6 +66,7 @@ export default function NovelInfoScreen() {
         chapterIndex: sortDescending
           ? data.chapters.length - 1 - index
           : index,
+        coverImage: data.coverImage,
       });
     },
     [navigation, data, sortDescending]
@@ -75,24 +76,26 @@ export default function NovelInfoScreen() {
     if (!data || !data.chapters.length) return;
     const firstChapter = data.chapters[0];
     navigation.navigate('ChapterReader', {
-      novelId: data.id,
+      novelId,
       chapterId: firstChapter.id,
       novelTitle: data.title,
       chapterTitle: firstChapter.title,
       chapterIndex: 0,
+      coverImage: data.coverImage,
     });
-  }, [data, navigation]);
+  }, [data, navigation, novelId]);
 
   const handleContinueReading = useCallback(() => {
-    if (!data || !progress) return;
+    if (!progress) return;
     navigation.navigate('ChapterReader', {
-      novelId: data.id,
+      novelId,
       chapterId: progress.chapterId,
-      novelTitle: data.title,
+      novelTitle: progress.novelTitle,
       chapterTitle: progress.chapterTitle,
       chapterIndex: progress.chapterIndex,
+      coverImage: data?.coverImage || progress.coverImage,
     });
-  }, [data, progress, navigation]);
+  }, [navigation, novelId, progress, data?.coverImage]);
 
   const renderHeader = useMemo(() => {
     if (!data) return null;
@@ -101,7 +104,17 @@ export default function NovelInfoScreen() {
         {/* Novel Info Section */}
         <View style={[styles.header, { backgroundColor: colors.surface }]}>
           <Image
-            source={{ uri: data.coverImage }}
+            source={{ 
+              uri: (() => {
+                let img = data.coverImage;
+                if (!img || img.trim() === '') {
+                  const idMatch = novelId.match(/-(\d+)$/);
+                  if (idMatch) img = `https://www.novelhall.com/comic/${idMatch[1]}.jpg`;
+                }
+                return `https://images.weserv.nl/?url=${encodeURIComponent(img || 'https://via.placeholder.com/300x450.png?text=No+Cover')}&default=${encodeURIComponent('https://via.placeholder.com/300x450.png?text=No+Cover')}`;
+              })(),
+              headers: { 'User-Agent': 'Mozilla/5.0' }
+            }}
             style={[styles.cover, shadows.md]}
             resizeMode="cover"
           />
@@ -236,7 +249,7 @@ export default function NovelInfoScreen() {
       <FlashList
         data={sortedChapters}
         renderItem={renderChapter}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => `${item.id}-${index}`}
         ListHeaderComponent={renderHeader}
         contentContainerStyle={styles.listContent}
       />

@@ -194,6 +194,7 @@ export type RootStackParamList = {
     novelTitle: string;
     chapterTitle: string;
     chapterIndex: number;
+    coverImage?: string;
   };
   ListDetails: { listId: string };
   ReadingStats: undefined;

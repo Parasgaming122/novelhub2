@@ -1,0 +1,1812 @@
+https://novelhall.vercel.app/api/:
+{
+  "success": true,
+  "message": "Novelhall Scraper API is running",
+  "version": "1.0.0",
+  "endpoints": {
+    "home": "/api/home",
+    "search": "/api/search?keyword={keyword}",
+    "novelInfo": "/api/info/{novelId}",
+    "chapter": "/api/chapter/{id}?novelId={novelId}&chapterId={chapterId}"
+  },
+  "documentation": "https://github.com/yourusername/novelhall-scraper-api"
+}
+.
+
+https://novelhall.vercel.app/api/home :
+{
+  "success": true,
+  "data": {
+    "recommended": [
+      {
+        "id": "I-am-wet-Daddy2022-6851",
+        "title": "I am wet Daddy!!",
+        "author": "its_a_wet_puss...",
+        "coverImage": "https://www.novelhall.com/uploadfile/202009/d1f5add97c.jpg",
+        "description": "Short stories that make you wet. Forbidden, dirty ...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      },
+      {
+        "id": "only-boy-in-a-family-full-of-women-ntr-38152",
+        "title": "Only boy in a family full of women-Ntr",
+        "author": "Unknown",
+        "coverImage": "https://www.novelhall.com/upload/images/article/20250710/only-boy-in-a-family-full-of-women-ntr.jpg",
+        "description": "Warning contains-Incest/Ntr/ Heavy Netorare A Boy ...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      },
+      {
+        "id": "milf-hunter-in-another-world-33841",
+        "title": "Milf Hunter in Another World",
+        "author": "Five Grain Eva...",
+        "coverImage": "https://www.novelhall.com/upload/images/article/20240925/milf-hunter-in-another-world.jpg",
+        "description": "Unofficial Synopsis :Geum Taeyang, a man who’s obs...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      },
+      {
+        "id": "honey-mother-ntr-40025",
+        "title": "Honey Mother – NTR",
+        "author": "RedRiver",
+        "coverImage": "https://www.novelhall.com/upload/images/article/20250915/honey-mother-ntr.jpg",
+        "description": "My mother, Grace Gu, was the second daughter of th...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      },
+      {
+        "id": "ntr-mommy-will-help-you-35311",
+        "title": "NTR: Mommy Will Help You!",
+        "author": "Mid_Night_Tale...",
+        "coverImage": "https://www.novelhall.com/upload/images/article/20250215/ntr-mommy-will-help-you.jpg",
+        "description": "Oliver was a shy boy who always got nervous whenev...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      },
+      {
+        "id": "Love-Sex-And-Everything-In-Between-12822",
+        "title": "Love, Sex, And Everything In Between",
+        "author": "MasterStoryTel...",
+        "coverImage": "https://www.novelhall.com/upload/images/article/20200503/Love,-Sex,-And-Everything-In-Between.jpg",
+        "description": "Warning: Explicit Sexual Content!\\n\\nPlease don't ...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      },
+      {
+        "id": "i-want-to-f-you-33658",
+        "title": "I Want to F*** You",
+        "author": "溪夕汐",
+        "coverImage": "https://www.novelhall.com/uploadfile/thumb/658bbbdef9415ba5e2ff857f1146ba6e/190-120-0-0.jpg",
+        "description": "All changes started when Tao Ruan received this me...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      },
+      {
+        "id": "urban-seduction-housewives-club-34556",
+        "title": "Urban Seduction: Housewives Club",
+        "author": "ShawnBee",
+        "coverImage": "https://www.novelhall.com/upload/images/article/20241208/urban-seduction-housewives-club.jpg",
+        "description": "(Warning: Harem, if you don't like it, please refr...",
+        "genre": "",
+        "status": "Unknown",
+        "updateTime": "",
+        "chapters": []
+      }
+    ],
+    "latestReleases": [
+      {
+        "novelId": "online-game-crazy-skeleton-36505",
+        "novelTitle": "Online Game: Crazy Skeleton",
+        "novelUrl": "/online-game-crazy-skeleton-36505/",
+        "genre": "Game",
+        "chapterId": "18556539",
+        "chapterTitle": "Chapter 2300 - 1798: Battle wi...",
+        "chapterUrl": "/online-game-crazy-skeleton-36505/18556539.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "from-folly-to-fortunei-rewrite-my-life-after-rebirth-36800",
+        "novelTitle": "From Folly to Fortune：I Rewrite My Life After Rebirth!",
+        "novelUrl": "/from-folly-to-fortunei-rewrite-my-life-after-rebirth-36800/",
+        "genre": "Historical",
+        "chapterId": "18554259",
+        "chapterTitle": "Chapter 807 - 803: Killing Chi...",
+        "chapterUrl": "/from-folly-to-fortunei-rewrite-my-life-after-rebirth-36800/18554259.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "wandering-gods-of-day-and-night-36511",
+        "novelTitle": "Wandering Gods of Day and Night",
+        "novelUrl": "/wandering-gods-of-day-and-night-36511/",
+        "genre": "Eastern",
+        "chapterId": "18554247",
+        "chapterTitle": "Chapter 857 - 355: Wind Horse ...",
+        "chapterUrl": "/wandering-gods-of-day-and-night-36511/18554247.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "rebirth-top-actress-your-big-shot-husband-is-jealous-again-37769",
+        "novelTitle": "Rebirth: Top Actress, Your Big Shot Husband is Jealous Again!",
+        "novelUrl": "/rebirth-top-actress-your-big-shot-husband-is-jealous-again-37769/",
+        "genre": "Romance",
+        "chapterId": "18554204",
+        "chapterTitle": "Chapter 570: Taking a bath and...",
+        "chapterUrl": "/rebirth-top-actress-your-big-shot-husband-is-jealous-again-37769/18554204.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "the-hivemind-is-conquering-for-me-34102",
+        "novelTitle": "The hivemind is conquering for me?",
+        "novelUrl": "/the-hivemind-is-conquering-for-me-34102/",
+        "genre": "Action",
+        "chapterId": "18554203",
+        "chapterTitle": "Chapter 637: Out Of The Questi...",
+        "chapterUrl": "/the-hivemind-is-conquering-for-me-34102/18554203.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "follow-the-path-of-dao-from-infancy-33311",
+        "novelTitle": "Follow the path of Dao from infancy",
+        "novelUrl": "/follow-the-path-of-dao-from-infancy-33311/",
+        "genre": "Eastern",
+        "chapterId": "18554198",
+        "chapterTitle": "Chapter 1649 Chapter 418: Open...",
+        "chapterUrl": "/follow-the-path-of-dao-from-infancy-33311/18554198.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "interstellar-number-one-farmer-i-only-want-to-farm-41119",
+        "novelTitle": "Interstellar Number One Farmer: I Only Want To Farm!",
+        "novelUrl": "/interstellar-number-one-farmer-i-only-want-to-farm-41119/",
+        "genre": "Sci-fi",
+        "chapterId": "18554164",
+        "chapterTitle": "Chapter 126 - 43: Journey to S...",
+        "chapterUrl": "/interstellar-number-one-farmer-i-only-want-to-farm-41119/18554164.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "turning-antagonist-to-protagonist-he-is-both-soft-and-fierce-41383",
+        "novelTitle": "Turning Antagonist to Protagonist: He is Both Soft and Fierce",
+        "novelUrl": "/turning-antagonist-to-protagonist-he-is-both-soft-and-fierce-41383/",
+        "genre": "Historical",
+        "chapterId": "18554149",
+        "chapterTitle": "Chapter 87 - 82: I Don’t Want ...",
+        "chapterUrl": "/turning-antagonist-to-protagonist-he-is-both-soft-and-fierce-41383/18554149.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "dominating-martial-king-36523",
+        "novelTitle": "Dominating Martial King",
+        "novelUrl": "/dominating-martial-king-36523/",
+        "genre": "Eastern",
+        "chapterId": "18554148",
+        "chapterTitle": "Chapter 1241 - 450: The Dust S...",
+        "chapterUrl": "/dominating-martial-king-36523/18554148.html",
+        "updateTime": "12-24 18:12"
+      },
+      {
+        "novelId": "substitute-bride-utterly-pampered-by-her-billionaire-husband-40038",
+        "novelTitle": "Substitute Bride: Utterly Pampered by Her Billionaire Husband",
+        "novelUrl": "/substitute-bride-utterly-pampered-by-her-billionaire-husband-40038/",
+        "genre": "Romance",
+        "chapterId": "18552907",
+        "chapterTitle": "Chapter 996: You’re Not Worthy...",
+        "chapterUrl": "/substitute-bride-utterly-pampered-by-her-billionaire-husband-40038/18552907.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "rebirth-slice-of-life-cultivation-35893",
+        "novelTitle": "Rebirth: Slice-of-life Cultivation",
+        "novelUrl": "/rebirth-slice-of-life-cultivation-35893/",
+        "genre": "Comedy",
+        "chapterId": "18552906",
+        "chapterTitle": "Chapter 1337 - 746: Sanctionin...",
+        "chapterUrl": "/rebirth-slice-of-life-cultivation-35893/18552906.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "transmigrated-as-my-aunt-in-the-70s-39060",
+        "novelTitle": "Transmigrated as My Aunt in the 70s",
+        "novelUrl": "/transmigrated-as-my-aunt-in-the-70s-39060/",
+        "genre": "Romance",
+        "chapterId": "18552888",
+        "chapterTitle": "Chapter 734 - 727: Unintention...",
+        "chapterUrl": "/transmigrated-as-my-aunt-in-the-70s-39060/18552888.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "my-apocalypse-territory-35898",
+        "novelTitle": "My Apocalypse Territory",
+        "novelUrl": "/my-apocalypse-territory-35898/",
+        "genre": "Action",
+        "chapterId": "18552887",
+        "chapterTitle": "Chapter 1081 - 850: Worried Po...",
+        "chapterUrl": "/my-apocalypse-territory-35898/18552887.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "contract-marriage-abusive-love-with-mrceo-38035",
+        "novelTitle": "Contract Marriage: Abusive Love with Mr.CEO",
+        "novelUrl": "/contract-marriage-abusive-love-with-mrceo-38035/",
+        "genre": "Romance",
+        "chapterId": "18552869",
+        "chapterTitle": "Chapter 531 - 278: Who Said Yo...",
+        "chapterUrl": "/contract-marriage-abusive-love-with-mrceo-38035/18552869.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "I-Am-the-Fated-Villain-24363",
+        "novelTitle": "I Am the Fated Villain",
+        "novelUrl": "/I-Am-the-Fated-Villain-24363/",
+        "genre": "Action",
+        "chapterId": "18552868",
+        "chapterTitle": "Chapter 1262:",
+        "chapterUrl": "/i-am-the-fated-villain-24363/18552868.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "i-got-reincarnated-as-a-zombie-girl-36791",
+        "novelTitle": "I Got Reincarnated as a Zombie Girl",
+        "novelUrl": "/i-got-reincarnated-as-a-zombie-girl-36791/",
+        "genre": "Fantasy",
+        "chapterId": "18552865",
+        "chapterTitle": "Chapter 305 - 301 – Reunion on...",
+        "chapterUrl": "/i-got-reincarnated-as-a-zombie-girl-36791/18552865.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "i-can-see-through-all-things-information-34821",
+        "novelTitle": "I Can See Through All Things' Information",
+        "novelUrl": "/i-can-see-through-all-things-information-34821/",
+        "genre": "Adventure",
+        "chapterId": "18552861",
+        "chapterTitle": "Chapter 1145 - 709: An Old Fri...",
+        "chapterUrl": "/i-can-see-through-all-things-information-34821/18552861.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "martial-conquest-of-the-nine-desolates-36524",
+        "novelTitle": "Martial Conquest of the Nine Desolates",
+        "novelUrl": "/martial-conquest-of-the-nine-desolates-36524/",
+        "genre": "Eastern",
+        "chapterId": "18552843",
+        "chapterTitle": "Chapter 1033 - 1017: The Great...",
+        "chapterUrl": "/martial-conquest-of-the-nine-desolates-36524/18552843.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "omg-tyrants-pampered-baby-is-a-valued-princess-37617",
+        "novelTitle": "OMG! Tyrant's Pampered Baby Is a Valued Princess",
+        "novelUrl": "/omg-tyrants-pampered-baby-is-a-valued-princess-37617/",
+        "genre": "Historical",
+        "chapterId": "18552825",
+        "chapterTitle": "Chapter 662: How Do You Know H...",
+        "chapterUrl": "/omg-tyrants-pampered-baby-is-a-valued-princess-37617/18552825.html",
+        "updateTime": "12-24 17:12"
+      },
+      {
+        "novelId": "rebirth-in-famine-she-thrives-by-lucky-space-36798",
+        "novelTitle": "Rebirth in Famine: She Thrives by Lucky Space",
+        "novelUrl": "/rebirth-in-famine-she-thrives-by-lucky-space-36798/",
+        "genre": "Romance",
+        "chapterId": "18552824",
+        "chapterTitle": "Chapter 655 bought/done",
+        "chapterUrl": "/rebirth-in-famine-she-thrives-by-lucky-space-36798/18552824.html",
+        "updateTime": "12-24 17:12"
+      }
+    ]
+  }
+}
+
+https://novelhall.vercel.app/api/info/reclaimed-by-my-ex-husband-37787:
+
+{
+  "success": true,
+  "data": {
+    "novel": {
+      "id": "",
+      "title": "Reclaimed By My Ex-husband",
+      "author": "Angelica25110\n                    $.ajax({\n                        type: \"GET\",\n                        url:\"https://www.novelhall.com/index.php?c=api&m=hits&module=book&id=37787\",\n                        dataType: \"jsonp\",\n                        success: function(data){\n                            $(\"#dr_show_hits_37787\").html(data.html);\n                        },\n                        error: function(){ }\n                    });",
+      "coverImage": "https://www.novelhall.com/upload/images/article/20250701/reclaimed-by-my-ex-husband.jpg",
+      "description": "“I want a divorce,” Nathaniel said with no emotions.I was shocked at how callus he could be. I didn’t get a chance to tell him about my pregnancy.After five years of marriage, I still couldn't warm hi... more\u003E\u003E",
+      "genre": "Romance",
+      "status": "Active",
+      "updateTime": "2025-12-20 13:12",
+      "chapters": []
+    },
+    "chapters": [
+      {
+        "id": "16660080",
+        "title": "Chapter 1: An unexpected baby",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660080.html"
+      },
+      {
+        "id": "16660081",
+        "title": "Chapter 2: The rebirth",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660081.html"
+      },
+      {
+        "id": "16660082",
+        "title": "Chapter 3: We are getting a divorce.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660082.html"
+      },
+      {
+        "id": "16660083",
+        "title": "Chapter 4: A tormented marriage",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660083.html"
+      },
+      {
+        "id": "16660084",
+        "title": "Chapter 5: A promise",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660084.html"
+      },
+      {
+        "id": "16660085",
+        "title": "Chapter 6: Torn apart",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660085.html"
+      },
+      {
+        "id": "16660086",
+        "title": "Chapter 7: A greedy family",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660086.html"
+      },
+      {
+        "id": "16660087",
+        "title": "Chapter 8: A new start",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660087.html"
+      },
+      {
+        "id": "16660088",
+        "title": "Chapter 9: A stunt?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660088.html"
+      },
+      {
+        "id": "16660089",
+        "title": "Chapter 10: Zara, a gold digger?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660089.html"
+      },
+      {
+        "id": "16660090",
+        "title": "Chapter 11: We are going home",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660090.html"
+      },
+      {
+        "id": "16660091",
+        "title": "Chapter 12: Zara, Zane’s nanny?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660091.html"
+      },
+      {
+        "id": "16660092",
+        "title": "Chapter 13: Did she truly hate him?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660092.html"
+      },
+      {
+        "id": "16660093",
+        "title": "Chapter 14: Why are you still here?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660093.html"
+      },
+      {
+        "id": "16660094",
+        "title": "Chapter 15: The princess of the Grant family",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660094.html"
+      },
+      {
+        "id": "16660095",
+        "title": "Chapter 16: A burden?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660095.html"
+      },
+      {
+        "id": "16660096",
+        "title": "Chapter 17: A disappointment",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660096.html"
+      },
+      {
+        "id": "16660097",
+        "title": "Chapter 18: The seduction",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660097.html"
+      },
+      {
+        "id": "16660098",
+        "title": "Chapter 19: The demand",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660098.html"
+      },
+      {
+        "id": "16660099",
+        "title": "Chapter 20: Is she cheating on me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660099.html"
+      },
+      {
+        "id": "16660100",
+        "title": "Chapter 21: A dinner invitation",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660100.html"
+      },
+      {
+        "id": "16660101",
+        "title": "Chapter 22: A heated argument",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660101.html"
+      },
+      {
+        "id": "16660102",
+        "title": "Chapter 23: The suspicion",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660102.html"
+      },
+      {
+        "id": "16660103",
+        "title": "Chapter 24: Zara is not coming?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660103.html"
+      },
+      {
+        "id": "16660104",
+        "title": "Chapter 25: Boys’ day out",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660104.html"
+      },
+      {
+        "id": "16660106",
+        "title": "Chapter 26: The echo of the past",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660106.html"
+      },
+      {
+        "id": "16660108",
+        "title": "Chapter 27: Nathaniel’s fury",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660108.html"
+      },
+      {
+        "id": "16660110",
+        "title": "Chapter 28: The trash",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660110.html"
+      },
+      {
+        "id": "16660112",
+        "title": "Chapter 29: Nathaniel’s care – genuine or false?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660112.html"
+      },
+      {
+        "id": "16660114",
+        "title": "Chapter 30: This marriage can’t be fixed.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660114.html"
+      },
+      {
+        "id": "16660116",
+        "title": "Chapter 31: Did I get him wrong?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660116.html"
+      },
+      {
+        "id": "16660118",
+        "title": "Chapter 32: She still cared.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660118.html"
+      },
+      {
+        "id": "16660120",
+        "title": "Chapter 33: Special soup",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660120.html"
+      },
+      {
+        "id": "16660122",
+        "title": "Chapter 34: The burning desire",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660122.html"
+      },
+      {
+        "id": "16660124",
+        "title": "Chapter 35: Who instructed you to do that?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660124.html"
+      },
+      {
+        "id": "16660126",
+        "title": "Chapter 36: The embarrassing moment",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660126.html"
+      },
+      {
+        "id": "16660128",
+        "title": "Chapter 37: Misunderstanding and accusation",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660128.html"
+      },
+      {
+        "id": "16660130",
+        "title": "Chapter 38: Nathaniel’s fury",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660130.html"
+      },
+      {
+        "id": "16660132",
+        "title": "Chapter 39: You lost her.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660132.html"
+      },
+      {
+        "id": "16660134",
+        "title": "Chapter 40: I just want to move on",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660134.html"
+      },
+      {
+        "id": "16660136",
+        "title": "Chapter 41: Give us a chance.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660136.html"
+      },
+      {
+        "id": "16660138",
+        "title": "Chapter 42: Zane is her sister’s son, not hers.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660138.html"
+      },
+      {
+        "id": "16660140",
+        "title": "Chapter 43: Riya spiked his drink",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660140.html"
+      },
+      {
+        "id": "16660142",
+        "title": "Chapter 44: Who spiked the drink?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660142.html"
+      },
+      {
+        "id": "16660144",
+        "title": "Chapter 45: Nathaniel and Zane spending time together",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660144.html"
+      },
+      {
+        "id": "16660146",
+        "title": "Chapter 46: A secret",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660146.html"
+      },
+      {
+        "id": "16660148",
+        "title": "Chapter 47: Who is shameless?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16660148.html"
+      },
+      {
+        "id": "16711952",
+        "title": "Chapter 48: Twisted desire",
+        "url": "/reclaimed-by-my-ex-husband-37787/16711952.html"
+      },
+      {
+        "id": "16711953",
+        "title": "Chapter 49: The distrust",
+        "url": "/reclaimed-by-my-ex-husband-37787/16711953.html"
+      },
+      {
+        "id": "16711954",
+        "title": "Chapter 50: Isaac’s another demand",
+        "url": "/reclaimed-by-my-ex-husband-37787/16711954.html"
+      },
+      {
+        "id": "16711955",
+        "title": "Chapter 51: Isaac’s cruel plan",
+        "url": "/reclaimed-by-my-ex-husband-37787/16711955.html"
+      },
+      {
+        "id": "16732557",
+        "title": "Chapter 52: A deal",
+        "url": "/reclaimed-by-my-ex-husband-37787/16732557.html"
+      },
+      {
+        "id": "16732558",
+        "title": "Chapter 53: Is Zara pregnant?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16732558.html"
+      },
+      {
+        "id": "16739646",
+        "title": "Chapter 54: A call to Nathaniel",
+        "url": "/reclaimed-by-my-ex-husband-37787/16739646.html"
+      },
+      {
+        "id": "16739647",
+        "title": "Chapter 55: The rising suspicion",
+        "url": "/reclaimed-by-my-ex-husband-37787/16739647.html"
+      },
+      {
+        "id": "16747552",
+        "title": "Chapter 56: I don’t trust Riya",
+        "url": "/reclaimed-by-my-ex-husband-37787/16747552.html"
+      },
+      {
+        "id": "16747553",
+        "title": "Chapter 57: Seed of doubt",
+        "url": "/reclaimed-by-my-ex-husband-37787/16747553.html"
+      },
+      {
+        "id": "16763032",
+        "title": "Chapter 58: The hatred and anger",
+        "url": "/reclaimed-by-my-ex-husband-37787/16763032.html"
+      },
+      {
+        "id": "16763033",
+        "title": "Chapter 59: Nathaniel doesn’t care about me.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16763033.html"
+      },
+      {
+        "id": "16776260",
+        "title": "Chapter 60: Zara was taken",
+        "url": "/reclaimed-by-my-ex-husband-37787/16776260.html"
+      },
+      {
+        "id": "16776262",
+        "title": "Chapter 61: Isaac and Jaxon are both missing.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16776262.html"
+      },
+      {
+        "id": "16810129",
+        "title": "Chapter 62: The ransom call",
+        "url": "/reclaimed-by-my-ex-husband-37787/16810129.html"
+      },
+      {
+        "id": "16810130",
+        "title": "Chapter 63: You are a monster, not a father.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16810130.html"
+      },
+      {
+        "id": "16810131",
+        "title": "Chapter 64: The rescue",
+        "url": "/reclaimed-by-my-ex-husband-37787/16810131.html"
+      },
+      {
+        "id": "16810133",
+        "title": "Chapter 65: Riya’s attempt to turn Nathaniel against Zara.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16810133.html"
+      },
+      {
+        "id": "16828277",
+        "title": "Chapter 66: You killed my baby again.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16828277.html"
+      },
+      {
+        "id": "16828278",
+        "title": "Chapter 67: I regret loving you.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16828278.html"
+      },
+      {
+        "id": "16863975",
+        "title": "Chapter 68: The retribution",
+        "url": "/reclaimed-by-my-ex-husband-37787/16863975.html"
+      },
+      {
+        "id": "16863976",
+        "title": "Chapter 69: The baby was already losing.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16863976.html"
+      },
+      {
+        "id": "16863978",
+        "title": "Chapter 70: The doubts v/s reality",
+        "url": "/reclaimed-by-my-ex-husband-37787/16863978.html"
+      },
+      {
+        "id": "16875684",
+        "title": "Chapter 71: Nathaniel’s fear",
+        "url": "/reclaimed-by-my-ex-husband-37787/16875684.html"
+      },
+      {
+        "id": "16875688",
+        "title": "Chapter 72: The new beginning.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16875688.html"
+      },
+      {
+        "id": "16888255",
+        "title": "Chapter 73: Nathaniel’s strange behavior",
+        "url": "/reclaimed-by-my-ex-husband-37787/16888255.html"
+      },
+      {
+        "id": "16888261",
+        "title": "Chapter 74: Workaholic Nathaniel",
+        "url": "/reclaimed-by-my-ex-husband-37787/16888261.html"
+      },
+      {
+        "id": "16898650",
+        "title": "Chapter 75: An unexpected visitor",
+        "url": "/reclaimed-by-my-ex-husband-37787/16898650.html"
+      },
+      {
+        "id": "16898651",
+        "title": "Chapter 76: A disgrace?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16898651.html"
+      },
+      {
+        "id": "16913200",
+        "title": "Chapter 77: Riya’s desperate attempt to get close to Nathaniel.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16913200.html"
+      },
+      {
+        "id": "16916652",
+        "title": "Chapter 78: The disturbing thought",
+        "url": "/reclaimed-by-my-ex-husband-37787/16916652.html"
+      },
+      {
+        "id": "16916653",
+        "title": "Chapter 79: An unexpected gesture",
+        "url": "/reclaimed-by-my-ex-husband-37787/16916653.html"
+      },
+      {
+        "id": "16927090",
+        "title": "Chapter 80: A gift from Nathaniel",
+        "url": "/reclaimed-by-my-ex-husband-37787/16927090.html"
+      },
+      {
+        "id": "16927091",
+        "title": "Chapter 81: Nathaniel, a flirt?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16927091.html"
+      },
+      {
+        "id": "16977865",
+        "title": "Chapter 82: Dinner date",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977865.html"
+      },
+      {
+        "id": "16977866",
+        "title": "Chapter 83: He was hiding an affair?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977866.html"
+      },
+      {
+        "id": "16977867",
+        "title": "Chapter 84: A silent challenge",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977867.html"
+      },
+      {
+        "id": "16977962",
+        "title": "Chapter 85: The incriminating evidence",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977962.html"
+      },
+      {
+        "id": "16977966",
+        "title": "Chapter 86: The mysterious uncle.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977966.html"
+      },
+      {
+        "id": "16977970",
+        "title": "Chapter 87: Have you forgotten something?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977970.html"
+      },
+      {
+        "id": "16977974",
+        "title": "Chapter 88: Did I say something wrong?",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977974.html"
+      },
+      {
+        "id": "16977978",
+        "title": "Chapter 89: Nathaniel’s confusion",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977978.html"
+      },
+      {
+        "id": "16977982",
+        "title": "Chapter 90: You weren’t there with us.",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977982.html"
+      },
+      {
+        "id": "16977986",
+        "title": "Chapter 91: The fashion show (Part-1)",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977986.html"
+      },
+      {
+        "id": "16977990",
+        "title": "Chapter 92: The fashion show (Part-2)",
+        "url": "/reclaimed-by-my-ex-husband-37787/16977990.html"
+      },
+      {
+        "id": "17037274",
+        "title": "Chapter 93: The enigmatic designer",
+        "url": "/reclaimed-by-my-ex-husband-37787/17037274.html"
+      },
+      {
+        "id": "17037277",
+        "title": "Chapter 94: The special award",
+        "url": "/reclaimed-by-my-ex-husband-37787/17037277.html"
+      },
+      {
+        "id": "17037280",
+        "title": "Chapter 95: Did Nathaniel ask you to help me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17037280.html"
+      },
+      {
+        "id": "17037283",
+        "title": "Chapter 96: The offer",
+        "url": "/reclaimed-by-my-ex-husband-37787/17037283.html"
+      },
+      {
+        "id": "17189743",
+        "title": "Chapter 97: A favor?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17189743.html"
+      },
+      {
+        "id": "17189744",
+        "title": "Chapter 98: Zara in another danger",
+        "url": "/reclaimed-by-my-ex-husband-37787/17189744.html"
+      },
+      {
+        "id": "17189745",
+        "title": "Chapter 99: The fight back",
+        "url": "/reclaimed-by-my-ex-husband-37787/17189745.html"
+      },
+      {
+        "id": "17189746",
+        "title": "Chapter 100: Nasty tricks",
+        "url": "/reclaimed-by-my-ex-husband-37787/17189746.html"
+      },
+      {
+        "id": "17189747",
+        "title": "Chapter 101: The penalty",
+        "url": "/reclaimed-by-my-ex-husband-37787/17189747.html"
+      },
+      {
+        "id": "17189748",
+        "title": "Chapter 102: Am I falling for her?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17189748.html"
+      },
+      {
+        "id": "17215294",
+        "title": "Chapter 103: No clue",
+        "url": "/reclaimed-by-my-ex-husband-37787/17215294.html"
+      },
+      {
+        "id": "17215297",
+        "title": "Chapter 104: Nathaniel’s surprise",
+        "url": "/reclaimed-by-my-ex-husband-37787/17215297.html"
+      },
+      {
+        "id": "17215300",
+        "title": "Chapter 105: Those men just disappeared",
+        "url": "/reclaimed-by-my-ex-husband-37787/17215300.html"
+      },
+      {
+        "id": "17215303",
+        "title": "Chapter 106: The confidential file",
+        "url": "/reclaimed-by-my-ex-husband-37787/17215303.html"
+      },
+      {
+        "id": "17215306",
+        "title": "Chapter 107: Nathaniel is biased?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17215306.html"
+      },
+      {
+        "id": "17215311",
+        "title": "Chapter 108: Riya is immature.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17215311.html"
+      },
+      {
+        "id": "17229822",
+        "title": "Chapter 109: Waste of time",
+        "url": "/reclaimed-by-my-ex-husband-37787/17229822.html"
+      },
+      {
+        "id": "17229834",
+        "title": "Chapter 110: What do you see in my eyes?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17229834.html"
+      },
+      {
+        "id": "17247439",
+        "title": "Chapter 111: The punishment",
+        "url": "/reclaimed-by-my-ex-husband-37787/17247439.html"
+      },
+      {
+        "id": "17247440",
+        "title": "Chapter 112: Nathaniel’s weakness",
+        "url": "/reclaimed-by-my-ex-husband-37787/17247440.html"
+      },
+      {
+        "id": "17251389",
+        "title": "Chapter 113: Zachary’s new girlfriend",
+        "url": "/reclaimed-by-my-ex-husband-37787/17251389.html"
+      },
+      {
+        "id": "17251395",
+        "title": "Chapter 114: Gracie’s accusation",
+        "url": "/reclaimed-by-my-ex-husband-37787/17251395.html"
+      },
+      {
+        "id": "17262016",
+        "title": "Chapter 115: She earned it on her own.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17262016.html"
+      },
+      {
+        "id": "17262017",
+        "title": "Chapter 116: I don’t approve of this marriage.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17262017.html"
+      },
+      {
+        "id": "17262018",
+        "title": "Chapter 117: Riya’s flawless act",
+        "url": "/reclaimed-by-my-ex-husband-37787/17262018.html"
+      },
+      {
+        "id": "17262019",
+        "title": "Chapter 118: Nathaniel had truly fallen for Zara.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17262019.html"
+      },
+      {
+        "id": "17269598",
+        "title": "Chapter 119: The telltale evidence.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17269598.html"
+      },
+      {
+        "id": "17269599",
+        "title": "Chapter 120: Riya’s lies were exposed",
+        "url": "/reclaimed-by-my-ex-husband-37787/17269599.html"
+      },
+      {
+        "id": "17273267",
+        "title": "Chapter 121: Who will Nathaniel choose – Zara or Riya?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17273267.html"
+      },
+      {
+        "id": "17273268",
+        "title": "Chapter 122: Don’t compare yourself to anyone.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17273268.html"
+      },
+      {
+        "id": "17328329",
+        "title": "Chapter 123 - 123: Do you like me, Nathaniel?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17328329.html"
+      },
+      {
+        "id": "17328330",
+        "title": "Chapter 124 - 124: Liam loves someone else.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17328330.html"
+      },
+      {
+        "id": "17328331",
+        "title": "Chapter 125 - 125: The shocking truth",
+        "url": "/reclaimed-by-my-ex-husband-37787/17328331.html"
+      },
+      {
+        "id": "17328332",
+        "title": "Chapter 126 - 126: A compensation?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17328332.html"
+      },
+      {
+        "id": "17328342",
+        "title": "Chapter 127 - 127: Unseen stares",
+        "url": "/reclaimed-by-my-ex-husband-37787/17328342.html"
+      },
+      {
+        "id": "17328346",
+        "title": "Chapter 128 - 128: The hidden danger",
+        "url": "/reclaimed-by-my-ex-husband-37787/17328346.html"
+      },
+      {
+        "id": "17329630",
+        "title": "Chapter 129 - 129: A wooden chest",
+        "url": "/reclaimed-by-my-ex-husband-37787/17329630.html"
+      },
+      {
+        "id": "17354530",
+        "title": "Chapter 130: Zane’s excitement",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354530.html"
+      },
+      {
+        "id": "17354532",
+        "title": "Chapter 131: Zara’s little secret",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354532.html"
+      },
+      {
+        "id": "17354534",
+        "title": "Chapter 132: The punishment",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354534.html"
+      },
+      {
+        "id": "17354536",
+        "title": "Chapter 133: Nora’s diary (Part – 1)",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354536.html"
+      },
+      {
+        "id": "17354538",
+        "title": "Chapter 134: Nora’s diary (Part – 2)",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354538.html"
+      },
+      {
+        "id": "17354540",
+        "title": "Chapter 135: I’m running out of patience.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354540.html"
+      },
+      {
+        "id": "17354542",
+        "title": "Chapter 136: A lie that changed everything.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354542.html"
+      },
+      {
+        "id": "17354544",
+        "title": "Chapter 137: Painful secret",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354544.html"
+      },
+      {
+        "id": "17354546",
+        "title": "Chapter 138: Your secret is safe with me.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17354546.html"
+      },
+      {
+        "id": "17366449",
+        "title": "Chapter 139: The past should stay where it belongs.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17366449.html"
+      },
+      {
+        "id": "17366451",
+        "title": "Chapter 140: Roberto dead?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17366451.html"
+      },
+      {
+        "id": "17374332",
+        "title": "Chapter 141: Riya’s meeting with Jaxon",
+        "url": "/reclaimed-by-my-ex-husband-37787/17374332.html"
+      },
+      {
+        "id": "17374334",
+        "title": "Chapter 142: A secret deal",
+        "url": "/reclaimed-by-my-ex-husband-37787/17374334.html"
+      },
+      {
+        "id": "17387691",
+        "title": "Chapter 143: Riya’s surprise visit",
+        "url": "/reclaimed-by-my-ex-husband-37787/17387691.html"
+      },
+      {
+        "id": "17387692",
+        "title": "Chapter 144: Stealing from the study",
+        "url": "/reclaimed-by-my-ex-husband-37787/17387692.html"
+      },
+      {
+        "id": "17401183",
+        "title": "Chapter 145: The purpose was served.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17401183.html"
+      },
+      {
+        "id": "17401184",
+        "title": "Chapter 146: The file was accessed.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17401184.html"
+      },
+      {
+        "id": "17408647",
+        "title": "Chapter 147: Is he suspecting me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17408647.html"
+      },
+      {
+        "id": "17408649",
+        "title": "Chapter 148: His growing suspicion",
+        "url": "/reclaimed-by-my-ex-husband-37787/17408649.html"
+      },
+      {
+        "id": "17503345",
+        "title": "Chapter 149 149: Hurt her again",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503345.html"
+      },
+      {
+        "id": "17503360",
+        "title": "Chapter 150 150: The squabble between Zara and Nathaniel",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503360.html"
+      },
+      {
+        "id": "17503363",
+        "title": "Chapter 151: Nathaniel is sick.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503363.html"
+      },
+      {
+        "id": "17503366",
+        "title": "Chapter 152: Do you love her?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503366.html"
+      },
+      {
+        "id": "17503369",
+        "title": "Chapter 153: Zara’s disappointment",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503369.html"
+      },
+      {
+        "id": "17503372",
+        "title": "Chapter 154: Danger follows so close",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503372.html"
+      },
+      {
+        "id": "17503376",
+        "title": "Chapter 155: Bree’s boyfriend",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503376.html"
+      },
+      {
+        "id": "17503380",
+        "title": "Chapter 156: Shay or Liam?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17503380.html"
+      },
+      {
+        "id": "17507990",
+        "title": "Chapter 157: The provocation",
+        "url": "/reclaimed-by-my-ex-husband-37787/17507990.html"
+      },
+      {
+        "id": "17507994",
+        "title": "Chapter 158: Time to remind you who you belong to.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17507994.html"
+      },
+      {
+        "id": "17514077",
+        "title": "Chapter 159: Nathaniel loves Zara or not?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17514077.html"
+      },
+      {
+        "id": "17514078",
+        "title": "Chapter 160: The regret",
+        "url": "/reclaimed-by-my-ex-husband-37787/17514078.html"
+      },
+      {
+        "id": "17519666",
+        "title": "Chapter 161: Cold memory of the past",
+        "url": "/reclaimed-by-my-ex-husband-37787/17519666.html"
+      },
+      {
+        "id": "17519667",
+        "title": "Chapter 162: Nathaniel’s blatant claim",
+        "url": "/reclaimed-by-my-ex-husband-37787/17519667.html"
+      },
+      {
+        "id": "17525225",
+        "title": "Chapter 163: The luncheon with an old client",
+        "url": "/reclaimed-by-my-ex-husband-37787/17525225.html"
+      },
+      {
+        "id": "17525226",
+        "title": "Chapter 164: Another meeting with Shay",
+        "url": "/reclaimed-by-my-ex-husband-37787/17525226.html"
+      },
+      {
+        "id": "17531316",
+        "title": "Chapter 165: Invitation to Shay’s fashion event",
+        "url": "/reclaimed-by-my-ex-husband-37787/17531316.html"
+      },
+      {
+        "id": "17531317",
+        "title": "Chapter 166: Shay’s fashion event",
+        "url": "/reclaimed-by-my-ex-husband-37787/17531317.html"
+      },
+      {
+        "id": "17535644",
+        "title": "Chapter 167: Why would Shay invite you?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17535644.html"
+      },
+      {
+        "id": "17535647",
+        "title": "Chapter 168: Riya’s vile plan",
+        "url": "/reclaimed-by-my-ex-husband-37787/17535647.html"
+      },
+      {
+        "id": "17542148",
+        "title": "Chapter 169: Zara is in danger (Part – 1)",
+        "url": "/reclaimed-by-my-ex-husband-37787/17542148.html"
+      },
+      {
+        "id": "17542151",
+        "title": "Chapter 170: Zara is in danger (Part – 2)",
+        "url": "/reclaimed-by-my-ex-husband-37787/17542151.html"
+      },
+      {
+        "id": "17688575",
+        "title": "Chapter 171: Nathaniel’s resistance",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688575.html"
+      },
+      {
+        "id": "17688576",
+        "title": "Chapter 172: Does my closeness disgust him?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688576.html"
+      },
+      {
+        "id": "17688577",
+        "title": "Chapter 173: The wet dream",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688577.html"
+      },
+      {
+        "id": "17688578",
+        "title": "Chapter 174: Why doesn’t he want me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688578.html"
+      },
+      {
+        "id": "17688579",
+        "title": "Chapter 175: Bree’s skepticism about Nathaniel",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688579.html"
+      },
+      {
+        "id": "17688580",
+        "title": "Chapter 176: The person hiding in the shadows",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688580.html"
+      },
+      {
+        "id": "17688581",
+        "title": "Chapter 177: Did I kill him?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688581.html"
+      },
+      {
+        "id": "17688582",
+        "title": "Chapter 178: A near-fatal accident",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688582.html"
+      },
+      {
+        "id": "17688583",
+        "title": "Chapter 179: Information about Roberto",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688583.html"
+      },
+      {
+        "id": "17688584",
+        "title": "Chapter 180: Zara’s cold response",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688584.html"
+      },
+      {
+        "id": "17688585",
+        "title": "Chapter 181: You think I’m incapable?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688585.html"
+      },
+      {
+        "id": "17688586",
+        "title": "Chapter 182: Do you still have doubts?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688586.html"
+      },
+      {
+        "id": "17688587",
+        "title": "Chapter 183: Morning intimacy",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688587.html"
+      },
+      {
+        "id": "17688588",
+        "title": "Chapter 184: Awkward moments",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688588.html"
+      },
+      {
+        "id": "17688589",
+        "title": "Chapter 185: Have you truly let go of Nora?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688589.html"
+      },
+      {
+        "id": "17688590",
+        "title": "Chapter 186: The reality of Riya",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688590.html"
+      },
+      {
+        "id": "17688591",
+        "title": "Chapter 187: The waitress is dead",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688591.html"
+      },
+      {
+        "id": "17688592",
+        "title": "Chapter 188: Liam’s doubts",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688592.html"
+      },
+      {
+        "id": "17688593",
+        "title": "Chapter 189: Are you trying to break my marriage?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688593.html"
+      },
+      {
+        "id": "17688594",
+        "title": "Chapter 190: Aren’t you tired of lying?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688594.html"
+      },
+      {
+        "id": "17688596",
+        "title": "Chapter 191: I’ll not forgive you",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688596.html"
+      },
+      {
+        "id": "17688597",
+        "title": "Chapter 192: Kelvin’s message",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688597.html"
+      },
+      {
+        "id": "17688598",
+        "title": "Chapter 193: A bait",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688598.html"
+      },
+      {
+        "id": "17688599",
+        "title": "Chapter 194: A dream",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688599.html"
+      },
+      {
+        "id": "17688600",
+        "title": "Chapter 195: Stuck in the past",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688600.html"
+      },
+      {
+        "id": "17688601",
+        "title": "Chapter 196: Nathaniel’s new assistant",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688601.html"
+      },
+      {
+        "id": "17688602",
+        "title": "Chapter 197: The chaos after the interview",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688602.html"
+      },
+      {
+        "id": "17688603",
+        "title": "Chapter 198: An accident at the parking lot",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688603.html"
+      },
+      {
+        "id": "17688604",
+        "title": "Chapter 199: A new phone?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688604.html"
+      },
+      {
+        "id": "17688605",
+        "title": "Chapter 200: Zara learned Liam’s secret",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688605.html"
+      },
+      {
+        "id": "17688606",
+        "title": "Chapter 201: Nathaniel was injured",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688606.html"
+      },
+      {
+        "id": "17688607",
+        "title": "Chapter 202: The rejection",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688607.html"
+      },
+      {
+        "id": "17688608",
+        "title": "Chapter 203: There is no reward for goodness anymore.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688608.html"
+      },
+      {
+        "id": "17688609",
+        "title": "Chapter 204: The unrestrained desire",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688609.html"
+      },
+      {
+        "id": "17688610",
+        "title": "Chapter 205: Can you feed me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688610.html"
+      },
+      {
+        "id": "17688611",
+        "title": "Chapter 206: Riya provoked Zara again",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688611.html"
+      },
+      {
+        "id": "17688612",
+        "title": "Chapter 207: Why is she so special?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688612.html"
+      },
+      {
+        "id": "17688613",
+        "title": "Chapter 208: Do you love me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17688613.html"
+      },
+      {
+        "id": "17711536",
+        "title": "Chapter 209: Another passionate night",
+        "url": "/reclaimed-by-my-ex-husband-37787/17711536.html"
+      },
+      {
+        "id": "17711537",
+        "title": "Chapter 210: Riya’s contract was terminated.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17711537.html"
+      },
+      {
+        "id": "17711538",
+        "title": "Chapter 211: Terminate the contract",
+        "url": "/reclaimed-by-my-ex-husband-37787/17711538.html"
+      },
+      {
+        "id": "17756459",
+        "title": "Chapter 212: The bribe",
+        "url": "/reclaimed-by-my-ex-husband-37787/17756459.html"
+      },
+      {
+        "id": "17756460",
+        "title": "Chapter 213: Could it really erase the scar?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17756460.html"
+      },
+      {
+        "id": "17756461",
+        "title": "Chapter 214: Open intimacy",
+        "url": "/reclaimed-by-my-ex-husband-37787/17756461.html"
+      },
+      {
+        "id": "17756462",
+        "title": "Chapter 215: Nathaniel’s sexy gift",
+        "url": "/reclaimed-by-my-ex-husband-37787/17756462.html"
+      },
+      {
+        "id": "17756463",
+        "title": "Chapter 216: A successful event",
+        "url": "/reclaimed-by-my-ex-husband-37787/17756463.html"
+      },
+      {
+        "id": "17763250",
+        "title": "Chapter 217: No direct connection",
+        "url": "/reclaimed-by-my-ex-husband-37787/17763250.html"
+      },
+      {
+        "id": "17819238",
+        "title": "Chapter 218: What are you hiding from me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17819238.html"
+      },
+      {
+        "id": "17819241",
+        "title": "Chapter 219: Zachary’s plan to outshine Nathaniel",
+        "url": "/reclaimed-by-my-ex-husband-37787/17819241.html"
+      },
+      {
+        "id": "17819244",
+        "title": "Chapter 220: The Humiliation",
+        "url": "/reclaimed-by-my-ex-husband-37787/17819244.html"
+      },
+      {
+        "id": "17819248",
+        "title": "Chapter 221: I can use this to my advantage.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17819248.html"
+      },
+      {
+        "id": "17826124",
+        "title": "Chapter 222: Riya exposed?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17826124.html"
+      },
+      {
+        "id": "17883188",
+        "title": "Chapter 223: You wanted both sisters",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883188.html"
+      },
+      {
+        "id": "17883189",
+        "title": "Chapter 224: Duty or love",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883189.html"
+      },
+      {
+        "id": "17883190",
+        "title": "Chapter 225: When did you start liking me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883190.html"
+      },
+      {
+        "id": "17883191",
+        "title": "Chapter 226: Do you love me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883191.html"
+      },
+      {
+        "id": "17883192",
+        "title": "Chapter 227: Iceberg or not, you belong to me.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883192.html"
+      },
+      {
+        "id": "17883194",
+        "title": "Chapter 228: The helplessness",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883194.html"
+      },
+      {
+        "id": "17883196",
+        "title": "Chapter 229: Who is the snake?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883196.html"
+      },
+      {
+        "id": "17883198",
+        "title": "Chapter 230: A solution?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883198.html"
+      },
+      {
+        "id": "17883200",
+        "title": "Chapter 231: A suicide?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883200.html"
+      },
+      {
+        "id": "17883202",
+        "title": "Chapter 232: Why do you always blame me?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883202.html"
+      },
+      {
+        "id": "17883204",
+        "title": "Chapter 233: Liam’s offer",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883204.html"
+      },
+      {
+        "id": "17883206",
+        "title": "Chapter 234: Gracie’s suggestion",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883206.html"
+      },
+      {
+        "id": "17883208",
+        "title": "Chapter 235: Fun at the house",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883208.html"
+      },
+      {
+        "id": "17883210",
+        "title": "Chapter 236: I have to secure my position.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883210.html"
+      },
+      {
+        "id": "17883212",
+        "title": "Chapter 237: Riya’s vile plan",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883212.html"
+      },
+      {
+        "id": "17883214",
+        "title": "Chapter 238: Let’s register the marriage first.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883214.html"
+      },
+      {
+        "id": "17883217",
+        "title": "Chapter 239: Who is getting married?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17883217.html"
+      },
+      {
+        "id": "17890665",
+        "title": "Chapter 240: What are you up to, Zachary?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17890665.html"
+      },
+      {
+        "id": "17890685",
+        "title": "Chapter 241: Nathaniel prioritizing Zara",
+        "url": "/reclaimed-by-my-ex-husband-37787/17890685.html"
+      },
+      {
+        "id": "17928171",
+        "title": "Chapter 242: Was it love, or just an infatuation?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17928171.html"
+      },
+      {
+        "id": "17928189",
+        "title": "Chapter 243: Did Riya poison Vincent?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17928189.html"
+      },
+      {
+        "id": "17928193",
+        "title": "Chapter 244: Mission to tear this family apart?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17928193.html"
+      },
+      {
+        "id": "17928195",
+        "title": "Chapter 245: You’ve lost their trust.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17928195.html"
+      },
+      {
+        "id": "17932696",
+        "title": "Chapter 246: Riya’s drama",
+        "url": "/reclaimed-by-my-ex-husband-37787/17932696.html"
+      },
+      {
+        "id": "17932705",
+        "title": "Chapter 247: I’m not breaking up with her.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17932705.html"
+      },
+      {
+        "id": "17937279",
+        "title": "Chapter 248: Let’s work together.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17937279.html"
+      },
+      {
+        "id": "17937280",
+        "title": "Chapter 249: Nathaniel’s worry for Zara",
+        "url": "/reclaimed-by-my-ex-husband-37787/17937280.html"
+      },
+      {
+        "id": "17942409",
+        "title": "Chapter 250: Hidden danger at the party",
+        "url": "/reclaimed-by-my-ex-husband-37787/17942409.html"
+      },
+      {
+        "id": "17942410",
+        "title": "Chapter 251: Gracie learned Riya’s secret",
+        "url": "/reclaimed-by-my-ex-husband-37787/17942410.html"
+      },
+      {
+        "id": "17946516",
+        "title": "Chapter 252: Is Gracie dead?",
+        "url": "/reclaimed-by-my-ex-husband-37787/17946516.html"
+      },
+      {
+        "id": "17946517",
+        "title": "Chapter 253: Riya’s suspicious activities",
+        "url": "/reclaimed-by-my-ex-husband-37787/17946517.html"
+      },
+      {
+        "id": "17950584",
+        "title": "Chapter 254: Gracie is critical.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17950584.html"
+      },
+      {
+        "id": "17950585",
+        "title": "Chapter 255: The tough moment of life",
+        "url": "/reclaimed-by-my-ex-husband-37787/17950585.html"
+      },
+      {
+        "id": "17958337",
+        "title": "Chapter 256: Gracie’s surgery went well.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17958337.html"
+      },
+      {
+        "id": "17976010",
+        "title": "Chapter 257: Drunk Riya",
+        "url": "/reclaimed-by-my-ex-husband-37787/17976010.html"
+      },
+      {
+        "id": "17976011",
+        "title": "Chapter 258: Zachary’s jealousy",
+        "url": "/reclaimed-by-my-ex-husband-37787/17976011.html"
+      },
+      {
+        "id": "17990459",
+        "title": "Chapter 259: I’m eager to see Nathaniel begging for mercy.",
+        "url": "/reclaimed-by-my-ex-husband-37787/17990459.html"
+      },
+      {
+        "id": "17990460",
+        "title": "Chapter 260: Gracie’s desperate attempt to expose Riya",
+        "url": "/reclaimed-by-my-ex-husband-37787/17990460.html"
+      },
+      {
+        "id": "17996535",
+        "title": "Chapter 261: Riya’s cruelty",
+        "url": "/reclaimed-by-my-ex-husband-37787/17996535.html"
+      },
+      {
+        "id": "18026427",
+        "title": "Chapter 262: Gracie is in a coma",
+        "url": "/reclaimed-by-my-ex-husband-37787/18026427.html"
+      },
+      {
+        "id": "18026428",
+        "title": "Chapter 263: Riya escaped again",
+        "url": "/reclaimed-by-my-ex-husband-37787/18026428.html"
+      },
+      {
+        "id": "18026430",
+        "title": "Chapter 264: The new partnership",
+        "url": "/reclaimed-by-my-ex-husband-37787/18026430.html"
+      },
+      {
+        "id": "18031351",
+        "title": "Chapter 265: Riya’s endless demands",
+        "url": "/reclaimed-by-my-ex-husband-37787/18031351.html"
+      },
+      {
+        "id": "18043255",
+        "title": "Chapter 266: Riya’s ultimate demand",
+        "url": "/reclaimed-by-my-ex-husband-37787/18043255.html"
+      },
+      {
+        "id": "18043256",
+        "title": "Chapter 267: Nathaniel ruined Zara",
+        "url": "/reclaimed-by-my-ex-husband-37787/18043256.html"
+      },
+      {
+        "id": "18090235",
+        "title": "Chapter 268: A helping hand",
+        "url": "/reclaimed-by-my-ex-husband-37787/18090235.html"
+      },
+      {
+        "id": "18090236",
+        "title": "Chapter 269: Dinner with Liam",
+        "url": "/reclaimed-by-my-ex-husband-37787/18090236.html"
+      },
+      {
+        "id": "18090237",
+        "title": "Chapter 270: Argument between Nathaniel and Liam",
+        "url": "/reclaimed-by-my-ex-husband-37787/18090237.html"
+      },
+      {
+        "id": "18090238",
+        "title": "Chapter 271: The fallout",
+        "url": "/reclaimed-by-my-ex-husband-37787/18090238.html"
+      },
+      {
+        "id": "18094686",
+        "title": "Chapter 272: The next dose is fatal",
+        "url": "/reclaimed-by-my-ex-husband-37787/18094686.html"
+      },
+      {
+        "id": "18099071",
+        "title": "Chapter 273: Caught red-handed?",
+        "url": "/reclaimed-by-my-ex-husband-37787/18099071.html"
+      },
+      {
+        "id": "18140572",
+        "title": "Chapter 274: Obstacles should be removed",
+        "url": "/reclaimed-by-my-ex-husband-37787/18140572.html"
+      },
+      {
+        "id": "18140573",
+        "title": "Chapter 275: A plan to trap Zachary? Or Nathaniel walking into danger?",
+        "url": "/reclaimed-by-my-ex-husband-37787/18140573.html"
+      },
+      {
+        "id": "18140574",
+        "title": "Chapter 276: Nathaniel has gone missing",
+        "url": "/reclaimed-by-my-ex-husband-37787/18140574.html"
+      },
+      {
+        "id": "18140576",
+        "title": "Chapter 277: It wasn’t Nora who saved you.",
+        "url": "/reclaimed-by-my-ex-husband-37787/18140576.html"
+      },
+      {
+        "id": "18140578",
+        "title": "Chapter 278: The truth surfaced finally",
+        "url": "/reclaimed-by-my-ex-husband-37787/18140578.html"
+      },
+      {
+        "id": "18158598",
+        "title": "Chapter 279: Ian is Kelvin’s son",
+        "url": "/reclaimed-by-my-ex-husband-37787/18158598.html"
+      },
+      {
+        "id": "18158599",
+        "title": "Chapter 280: The deadly fire",
+        "url": "/reclaimed-by-my-ex-husband-37787/18158599.html"
+      },
+      {
+        "id": "18158600",
+        "title": "Chapter 281: A mysterious phone call",
+        "url": "/reclaimed-by-my-ex-husband-37787/18158600.html"
+      },
+      {
+        "id": "18158601",
+        "title": "Chapter 282: It’s time for action.",
+        "url": "/reclaimed-by-my-ex-husband-37787/18158601.html"
+      },
+      {
+        "id": "18187956",
+        "title": "Chapter 283: Kelvin in danger",
+        "url": "/reclaimed-by-my-ex-husband-37787/18187956.html"
+      },
+      {
+        "id": "18187958",
+        "title": "Chapter 284: I need to eliminate her",
+        "url": "/reclaimed-by-my-ex-husband-37787/18187958.html"
+      },
+      {
+        "id": "18193319",
+        "title": "Chapter 285: A shootout",
+        "url": "/reclaimed-by-my-ex-husband-37787/18193319.html"
+      },
+      {
+        "id": "18208887",
+        "title": "Chapter 286: Help me leave this place.",
+        "url": "/reclaimed-by-my-ex-husband-37787/18208887.html"
+      },
+      {
+        "id": "18230923",
+        "title": "Chapter 287: I’m not happy with you either.",
+        "url": "/reclaimed-by-my-ex-husband-37787/18230923.html"
+      },
+      {
+        "id": "18342027",
+        "title": "Chapter 288: She will understand",
+        "url": "/reclaimed-by-my-ex-husband-37787/18342027.html"
+      },
+      {
+        "id": "18342030",
+        "title": "Chapter 289: You are my savior",
+        "url": "/reclaimed-by-my-ex-husband-37787/18342030.html"
+      },
+      {
+        "id": "18342032",
+        "title": "Chapter 290: You saved her?",
+        "url": "/reclaimed-by-my-ex-husband-37787/18342032.html"
+      },
+      {
+        "id": "18342034",
+        "title": "Chapter 291: I’m not going to give in that easily.",
+        "url": "/reclaimed-by-my-ex-husband-37787/18342034.html"
+      },
+      {
+        "id": "18342036",
+        "title": "Chapter 292: Gracie scolded Nathaniel",
+        "url": "/reclaimed-by-my-ex-husband-37787/18342036.html"
+      }
+    ]
+  }
+}
+
+
+https://novelhall.vercel.app/api/chapter/x?novelId=reclaimed-by-my-ex-husband-37787&chapterId=16660080:
+
+{
+  "success": true,
+  "data": {
+    "id": "",
+    "title": "",
+    "content": "\n\t\t\t\t\t\t\t Chapter 1: An unexpected baby\"Mrs. Grant, you are pregnant,\" the doctor stated.\u003Cbr\u003E\u003Cbr\u003E\"Pregnant?\" Zara froze, her hand instinctively resting on her stomach. ’Why now?’\u003Cbr\u003E\u003Cbr\u003EJust days ago, her husband had asked for a divorce. The baby came at the wrong time.\u003Cbr\u003E\u003Cbr\u003E\"Are you certain?\" she asked, anxiety tightening her voice.\u003Cbr\u003E\u003Cbr\u003E\"Yes, you are already twelve weeks along.\" The doctor handed her the sonography report. \"The baby is healthy, but you are anaemic. You’ll need to be careful.\"\u003Cbr\u003E\u003Cbr\u003EShe scribbled a few notes and tore off a prescription. \"Take these, and come back next week for a follow-up.\"\u003Cbr\u003E\u003Cbr\u003EZara exited the clinic in a daze. She glanced again at the report. ’I’m pregnant,’ she thought, a spark of hope flickering. ’Maybe it’s not that bar. Maybe Nathaniel will change his mind if he finds out about the baby...’\u003Cbr\u003E\u003Cbr\u003EHer fingers trembled as she dialed his number.\u003Cbr\u003E\u003Cbr\u003EAfter a long ring, he picked up. \"I’m heading out on a business trip,\" he said curtly. \"Sign the divorce papers before I get back.\"\u003Cbr\u003E\u003Cbr\u003EZara tried to steady her voice. \"We can talk when you return. I have something important to tell you.\"\u003Cbr\u003E\u003Cbr\u003E\"Sir, boarding has begun,\" a voice said in the background.\u003Cbr\u003E\u003Cbr\u003E\u003Cbr\u003E\u003Cbr\u003E\"Alright, let’s go.\"\u003Cbr\u003E\u003Cbr\u003EBeep\u003Cbr\u003E\u003Cbr\u003EThe call was ended abruptly before she could even answer.\u003Cbr\u003E\u003Cbr\u003EStaring at her phone, her eyes welled up. \"Why, Nathaniel?\" She whispered brokenly,\u003Cbr\u003E\u003Cbr\u003EShe had invested five years of her life in this marriage, pouring her heart into caring for Nathaniel and his son. She believed that her unwavering devotion would eventually make him notice her and return her love. But all she received in the end was heartbreak and disappointment.\u003Cbr\u003E\u003Cbr\u003ETears ran freely down her cheeks.\u003Cbr\u003E\u003Cbr\u003E\"I know this marriage started as a promise to my sister. I know you are struggling. But can’t you give me a chance?\"\u003Cbr\u003E\u003Cbr\u003EShe inhaled deeply, wiping her face. Her eyes hardened with resolve.\u003Cbr\u003E\u003Cbr\u003E\"No... I won’t give up. I won’t let you give up on me. I made a promise to take care of your son, and I’ll keep it. I’ll wait for you.\"\u003Cbr\u003E\u003Cbr\u003ESlipping the report into her bag, she stepped into the rainy evening. The sun had disappeared behind thick clouds, and streetlights were flickering to life.\u003Cbr\u003E\u003Cbr\u003EZara ran toward her car, shielding her head with her hands. She started the engine and drove off through the drizzle. Just as she rounded a bend, bright headlights blinded her.\u003Cbr\u003E\u003Cbr\u003EShe jerked the steering wheel to avoid the oncoming vehicle. Her tires screeched. The car spun, and then—crash.\u003Cbr\u003E\u003Cbr\u003EHer head slammed into the wheel. Pain exploded through her body. Dazed and bleeding, she sat motionless as the world spun.\u003Cbr\u003E\u003Cbr\u003EAs the minutes ticked by, she grew acutely aware of the pain blooming in her abdomen.\u003Cbr\u003E\u003Cbr\u003EThe baby.\u003Cbr\u003E\u003Cbr\u003EFumbling through her bag, she pulled out her phone and dialed the only number that came to mind.\u003Cbr\u003E\u003Cbr\u003E\"Hello?\" Nathaniel’s voice came through, as cold as ever.\u003Cbr\u003E\u003Cbr\u003E\"I... I’ve been in an accident. Please help...\" she managed, her voice barely above a whisper.\u003Cbr\u003E\u003Cbr\u003E\"Sir, please switch off your phone,\" a flight attendant said in the background.\u003Cbr\u003E\u003Cbr\u003E\"Zara, don’t make a scene to get attention. We’ll talk when I return.\"\u003Cbr\u003E\u003Cbr\u003E\u003Cbr\u003E\u003Cbr\u003EBeep\u003Cbr\u003E\u003Cbr\u003E\"Hello? Nathaniel?\" Zara cried, her heart breaking. \"Why are you so cruel? Don’t you care about me or our baby?\"\u003Cbr\u003E\u003Cbr\u003EPain wracked her abdomen. Blood was soaking her clothes.\u003Cbr\u003E\u003Cbr\u003EUnbuckling her seatbelt, she forced herself out of the wreck. Rain pelted her skin as she collapsed to the ground. She looked around desperately, praying someone would see her.\u003Cbr\u003E\u003Cbr\u003EA figure appeared in the misty rain.\u003Cbr\u003E\u003Cbr\u003E\"Help,\" she gasped. \"Please... my baby...\"\u003Cbr\u003E\u003Cbr\u003EThe figure stepped closer. Zara’s heart lifted when she recognized the face.\u003Cbr\u003E\u003Cbr\u003EIt was Riya, the adopted daughter of the Grant family. \u003Cbr\u003E\u003Cbr\u003E\u003Cbr\u003E\"Help me,\" she pleaded, clutching the edge of her skirt. \"Save my baby.\"\u003Cbr\u003E\u003Cbr\u003E\"You are pregnant?\" Riya’s voice was sharp, cold.\u003Cbr\u003E\u003Cbr\u003E\"Yes... Please take me to the hospital,\" Zara said hopefully. \"It’s the Grant family’s heir...\"\u003Cbr\u003E\u003Cbr\u003ERiya crouched and grabbed Zara’s jaw. \"You think you deserve to carry Nathaniel’s child?\" she sneered. \"He doesn’t love you. Never did.\" She squeezed her jaw harder.\u003Cbr\u003E\u003Cbr\u003EZara whimpered, trying to push her away.\u003Cbr\u003E\u003Cbr\u003E\"He has been planning to divorce you for so long,\" Riya continued. \"He stayed married to you for his son’s sake. But he is done now. He wants you gone. You think he’ll let this child be born?\" Riya hissed.\u003Cbr\u003E\u003Cbr\u003E\"No... he wouldn’t—\" Zara shook her head. \"Whether he loves me or not, this child is his.\"\u003Cbr\u003E\u003Cbr\u003E\"Oh, really? Let’s see what he says.\" Riya sneered as she dialed a number and feigned a look of panic. \"Nathaniel... Zara has had an accident. She is pregnant—we need your help. Come and save her and her baby.\"\u003Cbr\u003E\u003Cbr\u003EShe held the phone closer to Zara’s ear.\u003Cbr\u003E\u003Cbr\u003ENathaniel’s cold voice replied, \"She is not dead yet? Don’t call me until she is.\"\u003Cbr\u003E\u003Cbr\u003ERiya pulled the phone back.\u003Cbr\u003E\u003Cbr\u003EZara stared, stunned, as the words sank in. Her body trembled. Tears blended with the falling rain. She had loved Nathaniel deeply, spent five years as his wife, and cared for both him and his son. But now... he wanted her and their unborn child gone.\u003Cbr\u003E\u003Cbr\u003EA bitter smile touched her lips. ’I really thought he might care... but I was wrong.’\u003Cbr\u003E\u003Cbr\u003E\u003Cbr\u003E\u003Cbr\u003EHow foolish she had been to believe that her pregnancy might change his heart or make him reconsider their marriage.\u003Cbr\u003E\u003Cbr\u003EHe didn’t care. To him, she was nothing more than a promise he had to fulfill—a duty he was desperate to be free from.\u003Cbr\u003E\u003Cbr\u003E\"I told you,\" Riya said, victorious. \"He wants you gone. So die.\"\u003Cbr\u003E\u003Cbr\u003EHer smile vanished as she lunged at Zara, hands closing around her throat.\u003Cbr\u003E\u003Cbr\u003EZara fought back, scratching and hitting at Riya’s hands, but her resistance only made Riya squeeze her throat even harder.\u003Cbr\u003E\u003Cbr\u003E\"Once you are gone, Nathaniel will finally be mine,\" Riya hissed. \"You are the only thing standing in the way, and I’ll erase you from his life for good.\"\u003Cbr\u003E\u003Cbr\u003EZara’s vision blurred, her strength fading with each passing second. ’Nathaniel... will you even grieve when you hear I’m dead?’ she wondered silently. ’I regret giving you five years of my youth. I wish I had never met you. If there is a next life, let’s not cross paths again.\u003Cbr\u003E\u003Cbr\u003EHer hand fell lifelessly, and her body slumped as her soul slipped away.\u003Cbr\u003E\u003Cbr\u003ERiya stood over her lifeless form, eyes gleaming with triumph.\u003Cbr\u003E\u003Cbr\u003E\"Nathaniel is mine. Not yours. Not your sister’s. Mine.\"\u003Cbr\u003E\u003Cbr\u003EShe checked her phone. The call was never made to Nathaniel. She had faked it.\u003Cbr\u003E\u003Cbr\u003E\"Good thing I used AI to fake that voice.\"\t\t\t\t\t\t",
+    "novelId": "reclaimed-by-my-ex-husband-37787",
+    "novelTitle": "",
+    "navigation": {
+      "prev": null,
+      "next": null
+    }
+  }
+}

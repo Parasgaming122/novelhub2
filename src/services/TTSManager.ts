@@ -90,16 +90,26 @@ class TTSManager {
   }
 
   public async resume(settings: TTSSettings) {
-    await Speech.resume();
     this.isPaused = false;
-    // Note: Expo Speech resume might be buggy on some platforms, 
-    // a better way is often to re-speak the current paragraph if it doesn't continue.
+    // Standard resume is unreliable on many Android/iOS engines,
+    // so we re-speak the current paragraph if it was paused.
+    await Speech.stop();
+    await this.playParagraph(this.currentParagraphIndex, settings);
   }
 
   public async stop() {
     this.isPlaying = false;
     this.isPaused = false;
     await Speech.stop();
+  }
+
+  public async getAvailableVoices() {
+    try {
+      return await Speech.getAvailableVoicesAsync();
+    } catch (error) {
+      console.warn('[TTS] Failed to get voices:', error);
+      return [];
+    }
   }
 
   public skipNext(settings: TTSSettings) {

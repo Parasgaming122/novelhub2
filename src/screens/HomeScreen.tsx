@@ -118,7 +118,7 @@ export default function HomeScreen() {
           <FlatList
             data={continueReading}
             renderItem={renderContinueReading}
-            keyExtractor={(item) => item.novelId}
+            keyExtractor={(item, index) => `${item.novelId}-${index}`}
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.horizontalList}
@@ -135,7 +135,7 @@ export default function HomeScreen() {
           <FlatList
             data={data.recommended}
             renderItem={renderNovelHorizontal}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item, index) => `${item.id}-${index}`}
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.horizontalList}
@@ -151,12 +151,13 @@ export default function HomeScreen() {
           </Text>
           <View style={styles.grid}>
             {data.latestReleases.map((novel, index) => (
-              <NovelCard
-                key={`${novel.id}-${index}`}
-                novel={novel}
-                variant="vertical"
-                onPress={() => handleNovelPress(novel)}
-              />
+              <View key={`latest-${novel.id}-${index}`}>
+                <NovelCard
+                  novel={novel}
+                  variant="vertical"
+                  onPress={() => handleNovelPress(novel)}
+                />
+              </View>
             ))}
           </View>
         </View>

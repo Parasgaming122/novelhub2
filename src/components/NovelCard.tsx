@@ -23,9 +23,48 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = (SCREEN_WIDTH - spacing.lg * 3) / 2;
 const HORIZONTAL_CARD_WIDTH = 140;
 
+const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/300x450.png?text=No+Cover';
+
+/**
+ * Get proxied image URL to bypass CORS and Referer restrictions
+ */
+const getProxiedImageUrl = (url: string | undefined | null, novelId?: string) => {
+  let finalUrl = url;
+
+  // Handle protocol-relative URLs (e.g., //www.example.com)
+  if (finalUrl && finalUrl.startsWith('//')) {
+    finalUrl = 'https:' + finalUrl;
+  }
+
+  // Try to reconstruct from novelId if url is missing or clearly invalid
+  if ((!finalUrl || finalUrl.trim() === '' || finalUrl.length < 5) && novelId) {
+    // Novelhall pattern: anything-ending-in-digits or just digits
+    const idMatch = novelId.match(/(\d+)$/);
+    if (idMatch) {
+      finalUrl = `https://www.novelhall.com/comic/${idMatch[1]}.jpg`;
+    }
+  }
+
+  if (!finalUrl || typeof finalUrl !== 'string' || finalUrl.trim() === '' || finalUrl.includes('placeholder')) {
+    return PLACEHOLDER_IMAGE;
+  }
+  
+  // Clean URL - remove any existing proxy if present
+  const cleanUrl = finalUrl.replace('https://images.weserv.nl/?url=', '');
+  // Weserv proxy is great for bypassing hotlinking and handling various image formats
+  return `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}&default=${encodeURIComponent(PLACEHOLDER_IMAGE)}`;
+};
+
 function NovelCard({ novel, onPress, variant = 'vertical' }: NovelCardProps) {
   const theme = useSettingsStore((state) => state.reader.theme);
   const colors = themes[theme].colors;
+
+  const coverSource = {
+    uri: getProxiedImageUrl(novel.coverImage, novel.id),
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    },
+  };
 
   if (variant === 'horizontal') {
     return (
@@ -39,7 +78,7 @@ function NovelCard({ novel, onPress, variant = 'vertical' }: NovelCardProps) {
         activeOpacity={0.7}
       >
         <Image
-          source={{ uri: novel.coverImage }}
+          source={coverSource}
           style={styles.horizontalCover}
           resizeMode="cover"
         />
@@ -70,7 +109,7 @@ function NovelCard({ novel, onPress, variant = 'vertical' }: NovelCardProps) {
         activeOpacity={0.7}
       >
         <Image
-          source={{ uri: novel.coverImage }}
+          source={coverSource}
           style={styles.compactCover}
           resizeMode="cover"
         />
@@ -112,7 +151,7 @@ function NovelCard({ novel, onPress, variant = 'vertical' }: NovelCardProps) {
       activeOpacity={0.7}
     >
       <Image
-        source={{ uri: novel.coverImage }}
+        source={coverSource}
         style={styles.verticalCover}
         resizeMode="cover"
       />

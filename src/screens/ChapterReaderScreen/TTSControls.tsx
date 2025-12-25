@@ -67,95 +67,77 @@ function TTSControls({
             ]}
           />
         </View>
-        <Text style={[styles.progressText, { color: colors.textMuted }]}>
-          {currentParagraph} / {totalParagraphs}
+        <Text style={[styles.progressText, { color: colors.textSecondary }]}>
+          {Math.round(progress)}%
         </Text>
       </View>
 
-      {/* Controls */}
-      <View style={styles.controls}>
-        {/* Skip Previous */}
+      {/* Main Controls Row */}
+      <View style={styles.controlsRow}>
+        {/* Speed Down */}
+        <TouchableOpacity
+          style={[styles.smallButton, { backgroundColor: colors.surfaceVariant }]}
+          onPress={() => useSettingsStore.getState().setSpeed(Math.max(0.5, ttsSettings.speed - 0.1))}
+        >
+          <Text style={[styles.smallButtonText, { color: colors.text }]}>-</Text>
+        </TouchableOpacity>
+
+        {/* Previous */}
         <TouchableOpacity
           style={[styles.controlButton, { backgroundColor: colors.surfaceVariant }]}
           onPress={onSkipPrevious}
           disabled={!isPlaying && !isPaused}
         >
-          <Text
-            style={[
-              styles.controlIcon,
-              { color: isPlaying || isPaused ? colors.text : colors.textMuted },
-            ]}
-          >
-            ⏮
-          </Text>
+          <Text style={[styles.icon, { color: isPlaying || isPaused ? colors.text : colors.textMuted }]}>⏮</Text>
         </TouchableOpacity>
 
         {/* Play/Pause */}
-        {!isPlaying && !isPaused ? (
-          <TouchableOpacity
-            style={[styles.mainButton, { backgroundColor: colors.primary }]}
-            onPress={onPlay}
-          >
-            <Text style={styles.mainButtonIcon}>▶</Text>
-          </TouchableOpacity>
-        ) : isPaused ? (
-          <TouchableOpacity
-            style={[styles.mainButton, { backgroundColor: colors.primary }]}
-            onPress={onResume}
-          >
-            <Text style={styles.mainButtonIcon}>▶</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            style={[styles.mainButton, { backgroundColor: colors.primary }]}
-            onPress={onPause}
-          >
-            <Text style={styles.mainButtonIcon}>⏸</Text>
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity
+          style={[styles.playButton, { backgroundColor: colors.primary }]}
+          onPress={!isPlaying && !isPaused ? onPlay : isPaused ? onResume : onPause}
+        >
+          <Text style={styles.playIcon}>
+            {!isPlaying && !isPaused ? '▶' : isPaused ? '▶' : '⏸'}
+          </Text>
+        </TouchableOpacity>
 
-        {/* Skip Next */}
+        {/* Next */}
         <TouchableOpacity
           style={[styles.controlButton, { backgroundColor: colors.surfaceVariant }]}
           onPress={onSkipNext}
           disabled={!isPlaying && !isPaused}
         >
-          <Text
-            style={[
-              styles.controlIcon,
-              { color: isPlaying || isPaused ? colors.text : colors.textMuted },
-            ]}
-          >
-            ⏭
-          </Text>
+          <Text style={[styles.icon, { color: isPlaying || isPaused ? colors.text : colors.textMuted }]}>⏭</Text>
         </TouchableOpacity>
 
-        {/* Stop */}
+        {/* Speed Up */}
         <TouchableOpacity
-          style={[styles.controlButton, { backgroundColor: colors.surfaceVariant }]}
+          style={[styles.smallButton, { backgroundColor: colors.surfaceVariant }]}
+          onPress={() => useSettingsStore.getState().setSpeed(Math.min(5.0, ttsSettings.speed + 0.1))}
+        >
+          <Text style={[styles.smallButtonText, { color: colors.text }]}>+</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Stats & Volume indicator */}
+      <View style={styles.footerRow}>
+        <Text style={[styles.footerText, { color: colors.textMuted }]}>
+          Paragraph {currentParagraph} of {totalParagraphs}
+        </Text>
+        <View style={styles.badge}>
+          <Text style={[styles.badgeText, { color: colors.primary }]}>
+            {ttsSettings.speed.toFixed(1)}x Speed
+          </Text>
+        </View>
+        <TouchableOpacity 
+          style={styles.stopButton} 
           onPress={onStop}
           disabled={!isPlaying && !isPaused}
         >
-          <Text
-            style={[
-              styles.controlIcon,
-              { color: isPlaying || isPaused ? colors.error : colors.textMuted },
-            ]}
-          >
-            ⏹
-          </Text>
+          <Text style={[styles.stopText, { color: (isPlaying || isPaused) ? colors.error : colors.textMuted }]}>Stop</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Speed Indicator */}
-      <View style={styles.settingsRow}>
-        <Text style={[styles.settingLabel, { color: colors.textMuted }]}>
-          Speed: {ttsSettings.speed.toFixed(1)}x
-        </Text>
-        <Text style={[styles.settingLabel, { color: colors.textMuted }]}>
-          Pitch: {ttsSettings.pitch.toFixed(1)}
-        </Text>
-      </View>
     </View>
   );
 }
@@ -185,46 +167,87 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   progressText: {
-    fontSize: typography.fontSizes.xs,
-    minWidth: 60,
+    fontSize: 10,
+    fontWeight: '700',
+    width: 35,
     textAlign: 'right',
   },
-  controls: {
+  controlsRow: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
+    marginBottom: spacing.md,
   },
   controlButton: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: spacing.sm,
   },
-  controlIcon: {
-    fontSize: 18,
-  },
-  mainButton: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+  playButton: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  playIcon: {
+    fontSize: 28,
+    color: '#FFFFFF',
+    marginLeft: 2, // Slight offset for visual centering of triangle
+  },
+  icon: {
+    fontSize: 22,
+  },
+  smallButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  smallButtonText: {
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  footerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: spacing.lg,
+    marginTop: spacing.sm,
+  },
+  footerText: {
+    fontSize: 11,
+    flex: 1,
+  },
+  badge: {
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 2,
+    borderRadius: 12,
+    backgroundColor: 'rgba(0,0,0,0.05)',
     marginHorizontal: spacing.md,
   },
-  mainButtonIcon: {
-    fontSize: 20,
-    color: '#FFFFFF',
+  badgeText: {
+    fontSize: 10,
+    fontWeight: '700',
   },
-  settingsRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: spacing.md,
-    gap: spacing.xl,
+  stopButton: {
+    paddingVertical: spacing.xs,
+    paddingHorizontal: spacing.sm,
+  },
+  stopText: {
+    fontSize: 12,
+    fontWeight: '600',
   },
   settingLabel: {
-    fontSize: typography.fontSizes.xs,
+    fontSize: 12,
   },
 });

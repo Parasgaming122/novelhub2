@@ -30,7 +30,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export default function ChapterReaderScreen() {
   const route = useRoute<RouteProps>();
   const navigation = useNavigation<NavigationProp>();
-  const { novelId, chapterId, novelTitle, chapterTitle, chapterIndex } =
+  const { novelId, chapterId, novelTitle, chapterTitle, chapterIndex, coverImage } =
     route.params;
 
   // Settings and stores
@@ -81,6 +81,7 @@ export default function ChapterReaderScreen() {
     chapterTitle,
     chapterIndex,
     currentParagraph,
+    coverImage,
   });
 
   // Save on unmount
@@ -190,11 +191,16 @@ export default function ChapterReaderScreen() {
         currentParagraph={isPlaying || isPaused ? currentIndex : -1}
         onPress={toggleControls}
         onParagraphPress={(index) => {
-          setCurrentParagraph(index);
-          if (isPlaying) {
-            stop();
-            speak(index);
+          // If TTS is already active (playing or paused), a tap should ONLY toggle controls
+          // to prevent accidental seeking/restarting while listening.
+          if (isPlaying || isPaused) {
+            toggleControls();
+            return;
           }
+          
+          // Otherwise, allow seeking to the tapped paragraph
+          setCurrentParagraph(index);
+          toggleControls();
         }}
       />
 

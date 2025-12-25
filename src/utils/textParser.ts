@@ -26,16 +26,20 @@ export function stripHtml(html: string): string {
   // Replace <br>, <p>, <div> with newlines
   text = text
     .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<p[^>]*>/gi, '\n')
     .replace(/<\/p>/gi, '\n\n')
-    .replace(/<\/div>/gi, '\n');
+    .replace(/<div[^>]*>/gi, '\n')
+    .replace(/<\/div>/gi, '\n\n');
 
   // Remove all other HTML tags
   text = text.replace(HTML_TAG_REGEX, '');
 
   // Clean up whitespace
   text = text
-    .replace(MULTIPLE_SPACES_REGEX, ' ')
-    .replace(MULTIPLE_NEWLINES_REGEX, '\n\n')
+    .replace(/\r\n/g, '\n') // Normalize Windows newlines
+    .replace(/[^\S\r\n]+/g, ' ') // Replace multiple spaces/tabs (not newlines) with a single space
+    .replace(/\n[^\S\r\n]+/g, '\n') // Remove horizontal leading whitespace from lines
+    .replace(/\n{3,}/g, '\n\n') // Max 2 newlines
     .trim();
 
   return text;
@@ -47,21 +51,24 @@ export function stripHtml(html: string): string {
 export function splitIntoParagraphs(text: string): string[] {
   if (!text) return [];
 
-  // Split by double newlines or single newlines
-  const paragraphs = text
+  // 1. Try splitting by double newlines first (standard)
+  let paragraphs = text
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter((p) => p.length > 0);
 
-  // If we only got one paragraph and it's long, try to split by single newlines
-  if (paragraphs.length === 1 && paragraphs[0].length > 500) {
-    const singleNewlineSplit = text
+  // 2. If we only got one giant block or very few paragraphs, 
+  // and the text is reasonably long, try splitting by single newlines.
+  // Scraping often loses the double newline structure.
+  if (paragraphs.length <= 3 && text.length > 200) {
+    const lines = text
       .split(/\n/)
       .map((p) => p.trim())
-      .filter((p) => p.length > 0);
+      .filter((p) => p.length > 2); // Filter out very short lines like single chars
     
-    if (singleNewlineSplit.length > 1) {
-      return singleNewlineSplit;
+    // Only use lines if there are many of them
+    if (lines.length > paragraphs.length + 3) {
+      return lines;
     }
   }
 

@@ -164,7 +164,7 @@ export default function SearchScreen() {
       <FlashList
         data={hasResults ? data : []}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => `${item.id}-${index}`}
         ListEmptyComponent={ListEmptyComponent}
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={styles.listContent}
